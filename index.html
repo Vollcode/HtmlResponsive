@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Website Tutorial</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/popper.js/dist/umd/popper.min.js"></script>
+
+
+
+</head>
+<body>
+<!--
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="assets/images/iconoweb.png" width="118" height="79.6">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#miMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="miMenu">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Destinos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Quienes somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Dónde estamos</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse" id="redes_sociales">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link fa fa-twitter" href="#"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fa fa-whatsapp" href="#"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fa fa-facebook" href="#"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fa fa-instagram" href="#"></a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link fa fa-linkedin" href="#"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fa fa-youtube" href="#"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+-->
+
+    <nav id="menu" class="navbar fixed-top navbar-dark navbar-expand-lg navbar-template">
+        <a class="navbar-brand" href="#">GeeksHub Travels</a>
+        <div class="d-flex flex-row order-2 order-lg-3">
+            <ul id="rsociales" class="collapse navbar-collapse navbar-nav flex-row">
+                <li class="nav-item"><a class="nav-link px-2" href="#"><span class="fa fa-facebook"></span></a></li>
+                <li class="nav-item"><a class="nav-link px-2" href="#"><span class="fa fa-twitter"></span></a></li>
+                <li class="nav-item"><a class="nav-link px-2" href="#"><span class="fa fa-youtube"></span></a></li>
+                <li class="nav-item"><a class="nav-link px-2" href="#"><span class="fa fa-linkedin"></span></a></li>
+            </ul>
+            <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse order-3 order-lg-2" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Destinos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Quienes somos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Dónde estamos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+
+
+    <section>
+
+        <div id="primer_carousel" class="carousel slide" data-ride="carousel">
+            <ol id="indicadores_primer_carousel" class="carousel-indicators">
+                <li data-target="#primer_carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#primer_carousel" data-slide-to="1"></li>
+                <li data-target="#primer_carousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="assets/images/mountains.png" alt="First slide">
+                    <div class="carousel-caption">
+                        <h1>Viaja!</h1>
+                        <h3>Descubre lugares maravillosos</h3><br>
+                        <button type="button" class="btn btn-warning">Ver destinos</button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="assets/images/red.png" alt="Second slide">
+                    <div class="carousel-caption">
+                        <h1>Viaja!</h1>
+                        <h3>Descubre lugares maravillosos</h3><br>
+                        <button type="button" class="btn btn-warning">Ver destinos</button>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="assets/images/sunset.jpg" alt="Third slide">
+                    <div class="carousel-caption">
+                        <h1>Viaja!</h1>
+                        <h3>Descubre lugares maravillosos</h3><br>
+                        <button type="button" class="btn btn-warning">Ver destinos</button>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#primer_carousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#primer_carousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>
+
+
+
+    <section id="desktop">
+        <div class="container">
+
+                <div class="row mb-3 mt-3">
+                    <div class="col-lg-4 col-md-4">
+                        <div class="hovereffect">
+                            <img class="img-fluid" src="assets/images/mykonos.jpg" alt="Mykonos">
+                            <div class="overlay">
+                                <h2>Save 90$ pay only</h2>
+                                <a class="info" href="#">359$</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="hovereffect">
+                            <img class="img-fluid" src="assets/images/londres.jpg" alt="London">
+                            <div class="overlay">
+                                <h2>Save 75$ pay only</h2>
+                                <a class="info" href="#">729$</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="hovereffect">
+                            <img class="img-fluid" src="assets/images/dublin.jpg" alt="Dublin">
+                            <div class="overlay">
+                                <h2>Save 35$ pay only</h2>
+                                <a class="info" href="#">519$</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col-lg-4 col-md-4">
+                        <div class="hovereffect">
+                            <img class="img-fluid" src="assets/images/paris.jpg" alt="Paris">
+                            <div class="overlay">
+                                <h2>Save 65$ pay only</h2>
+                                <a class="info" href="#">329$</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="hovereffect">
+                            <img class="img-fluid" src="assets/images/amsterdam.jpg" alt="Amsterdam">
+                            <div class="overlay">
+                                <h2>Save 95$ pay only</h2>
+                                <a class="info" href="#">199$</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="hovereffect">
+                            <img class="img-fluid" src="assets/images/roma.jpg" alt="Rome">
+                            <div class="overlay">
+                                <h2>Save 50$ pay only</h2>
+                                <a class="info" href="#">659$</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    </section>
+
+
+<!-- Prueba -->
+
+    <section id="mobile">
+        <div class="container-fluid">
+            <div class="row mb-3 mt-3">
+                <div class="col" id="test">
+                    <div id="carrusel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="assets/images/mykonos.jpg" alt="Mykonos">
+                                <div class="carousel-caption">
+                                    <h3 class="display-4">Save 90$</h3>
+                                    <p class="lead">
+                                        <a class="btn btn-primary btn-lg" href="#" role="button">Buy now</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="assets/images/londres.jpg" alt="London">
+                                <div class="carousel-caption">
+                                    <h3 class="display-4">Save 90$</h3>
+                                    <p class="lead">
+                                        <a class="btn btn-primary btn-lg" href="#" role="button">Buy now</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="assets/images/dublin.jpg" alt="Dublin">
+                                <div class="carousel-caption">
+                                    <h1 class="display-4">Save 90$</h1>
+                                    <p class="lead">
+                                        <a class="btn btn-primary btn-lg" href="#" role="button">Buy now</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <a id="control_dch" class="carousel-control-prev" href="#carrusel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a id="control_izq" class="carousel-control-next" href="#carrusel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--  Fin Prueba -->
+
+
+
+
+
+<section id="quien">
+    <a name="quienquien">
+        <div class="container">
+            <div id="texto" class="jumbotron text-center">
+                <h4>QUIÉNES SOMOS</h4>
+                <br>
+                <p>GeeksHubs Travel es una agencia de viaje online creada en 2009 por un equipo de viajeros entudiastas que deciden hacer de su pasión por conocer el mundo un modo de vida. Desde nuestros inicios hemos diseñado más de 500 viajes organizados a diferentes destinos de Europa, Norteamérica y Asia. Nuestro objetivo ahora es ir ampliando horizontes poco a poco.</p>
+                <button type="button" class="btn btn-primary">DESCUBRIR</button>
+            </div>
+        </div>
+    </a>
+</section>
+<section id="donde">
+    <div></br></div>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3079.4494198593693!2d-0.35599339191923934!3d39.48176539062383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604898947abad3%3A0x5aae0e0b7fa0358a!2sGeeksHubs+Space+Valencia!5e0!3m2!1ses!2ses!4v1518723864279"
+                            width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-6">
+                    <p>E: enquiry@artiotravel.com <br>
+                        P: 0264 123 4567
+                    </p>
+                    <p>
+                        Give use a call or drop by anytime, we endeavour to answer all enquiries within 24 hours on
+                        business days.
+                    </p>
+                    <p>We are open from 8.30 AM - 4.00 PM week days.
+                    </p>
+                    <form role="form">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <input value="Name*" type="text" class="form-control">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input value="Email*" type="email" class="form-control">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input value="Phone" type="tel" class="form-control">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input value="Country" type="tel" class="form-control">
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="form-group col-md-12">
+                                <textarea class="form-control" rows="4">Message</textarea>
+                                <p>*PLEASE COMPLETE ALL FIELDS CORRECTLY</p>
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <input type="hidden" name="save" value="contact">
+                                <button type="button" onclick="alert('Mensaje enviado')" class="btn-warning btn-lg"><b>Enviar mensaje</b></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="row well text-light bg-dark">
+        <div class="col-md-2 col-sm-6 text-sm-left">
+        </div>
+        <div class="col-md-4 col-sm-6 text-sm-left">
+            <h5>¿NECESITAS AYUDA?</h5>0264 123 4567<br>
+            <a href="#" onclick="alert('Si es urgente llámanos. ¡Gracias!');" class="text-white bg-dark" title="enquiry@geekshubstravels.com">enquiry@geekshubstravels.com
+            </a><br>
+            Lun-Vie: 9:30-19:00 Sab: 10:00-14:00
+        </div>
+        <div class="col-md-3 col-sm-6 text-sm-left">
+            <h5>INFORMACIÓN</h5> Quienes somos <br> Preguntas frecuentes <br> Política de privacidad <br> Condiciones
+            generales <br> Aviso legal <br> Contacto <br> Programa de puntos <br>
+        </div>
+        <div class="col-md-3 col-sm-6 text-sm-left">
+            <h5>SUSCRIBETE A LA NEWSLETTER</h5>
+            <div class="form-group col-md-12">
+                <input value="Correo electrónico" type="tel" class="form-control">
+
+            </div>
+            <div class="form-group col-md-12">
+                <input type="hidden" name="save" value="contact">
+                <button type="button" onclick="alert('Te has suscrito correctamente a nuestra Newsletter')" class="btn-warning btn-lg"><b>SUSCRIBETE</b></button>
+            </div>
+        </div>
+    </div>
+    <div id="sccial_mobile" class="container">
+        <div class="row bg-dark">
+            <div class="col"><a class="nav-link px-2" href="#"><span class="fa fa-twitter"></span></a></div>
+            <div class="col"><a class="nav-link px-2" href="#"><span class="fa fa-whatsapp"></span></a></div>
+            <div class="col"><a class="nav-link px-2" href="#"><span class="fa fa-facebook"></span></a></div>
+            <div class="col"><a class="nav-link px-2" href="#"><span class="fa fa-instagram"></span></a></div>
+            <div class="col"><a class="nav-link px-2" href="#"><span class="fa fa-linkedin"></span></a></div>
+            <div class="col"><a class="nav-link px-2" href="#"><span class="fa fa-youtube"></span></a></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center text-light bg-dark text-white">
+            &copy; GeeksHubs Travels 2018 Todos los derechos reservados
+        </div>
+    </div>
+</footer>
+
+    <script>
+        $(window).scroll(function(){
+            if($("#menu").offset().top >56) {
+                $("#menu").addClass("bg-dark");
+            }else{
+                $("#menu").removeClass("bg-dark");
+            }
+        });
+    </script>
+
+
+
+
+</body>
+</html>
