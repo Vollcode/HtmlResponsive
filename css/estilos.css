@@ -147,7 +147,6 @@
 
 #mobile{
     display: none;
-
 }
 #primer_carousel .carousel-control-prev-icon{
     display:none;
@@ -159,6 +158,21 @@
     display:none;
 }
 
+#footer-section {
+  padding-top: 1em;
+}
+#quien{
+  background:url("../assets/images/traveler.jpg")  no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#texto {
+  width: 40vw;
+
+}
 
 
 @media (max-width: 992px){
@@ -198,5 +212,12 @@
     }
     #sccial_mobile{
         display: inline;
+    }
+    #texto {
+      width: 80vw;
+    }
+
+    #quien{
+      background-image: none;
     }
 }
