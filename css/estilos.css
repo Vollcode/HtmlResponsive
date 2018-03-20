@@ -130,7 +130,8 @@
 /* prueba controles*/
 
 #carrusel #control_dch{
-    color: black;
+  background-image : url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E")
+  color: black !important;
     /* height: 100px;
      width: 100px;
      outline: black;
@@ -139,10 +140,13 @@
      /*border-radius: 50%;
      border: 1px solid black;*/
 }
+
 /* fin prueba controles*/
 
 #primer_carousel{
     min-width: fit-content;
+    background-size: 100%;
+    background-size: cover;
 }
 
 #mobile{
@@ -174,7 +178,6 @@
 
 }
 
-
 @media (max-width: 992px){
     #rsociales{
         display: none;
@@ -183,8 +186,8 @@
 @media (max-width: 770px){
     #mobile{
         display: inline;
-
     }
+
     #desktop {
         display: none;
     }
@@ -207,6 +210,7 @@
         transition:all 2s ease;
         position: fixed;
     }
+
     #donde{
         display: none;
     }
