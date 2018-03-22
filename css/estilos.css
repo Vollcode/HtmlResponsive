@@ -158,6 +158,19 @@
 #sccial_mobile{
     display:none;
 }
+.form-footer {
+    padding: 5px;
+}
+footer {
+    font-size: small;
+    background-color:#0D3349;
+}
+footer div {
+    padding-top: 10px;
+}
+footer div.derechos {
+    padding-top: 0px;
+}
 
 
 

@@ -1,13 +1,24 @@
 
-.container {
+.acceso {
+    padding-top: 50px;
+    width: 100%;
+    height: 60%;
     position: relative;
     align-content: center;
     background-image: url("../assets/images/mountains.png");
+}
+.registro {
+    display: flex;
+    justify-content: center;
 }
 .signup-form-container {
     align-content: center;
     width: 50%;
     background-color: transparent
+}
+.form-footer {
+    display: flex;
+    justify-content: center;
 }
 .limpiar{
     clear: both;
