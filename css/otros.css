@@ -1,0 +1,14 @@
+
+.container {
+    position: relative;
+    align-content: center;
+    background-image: url("../assets/images/mountains.png");
+}
+.signup-form-container {
+    align-content: center;
+    width: 50%;
+    background-color: transparent
+}
+.limpiar{
+    clear: both;
+}

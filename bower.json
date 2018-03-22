@@ -10,6 +10,7 @@
   "dependencies": {
     "components-font-awesome": "^5.0.6",
     "popper.js": "^1.14.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "bootstrap": "^4.0.0"
   }
 }

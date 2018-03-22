@@ -17,8 +17,8 @@
 .carousel-caption{
     top:50%;
     transform: translateY(-50%);
-
 }
+
 /* prueba imagen carousel
  #primer_carousel .carousel-inner .carousel-item  {
     height: 100vh;
