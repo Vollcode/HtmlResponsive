@@ -5,7 +5,7 @@
     background-color: transparent;
     color: black;
     padding: 1% 0;
-    font-size: 1.2em;
+    font-size: 1em;
     border:0;
 }
 .navbar-brand{
@@ -18,7 +18,6 @@
     top:50%;
     transform: translateY(-50%);
 }
-
 /* prueba imagen carousel
  #primer_carousel .carousel-inner .carousel-item  {
     height: 100vh;
@@ -166,7 +165,7 @@ footer {
     background-color:#0D3349;
 }
 footer div {
-    padding-top: 10px;
+    padding-top: 6px;
 }
 footer div.derechos {
     padding-top: 0px;
