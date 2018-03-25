@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LogIn</title>
+  </head>
+  <body>
+    <form action="index.html" method="post">
+      <label for="email">Email</label>
+      <input type="text" name="email">
+      <label for="password">Password</label>
+      <input type="text" name="password">
+      <button type="submit">Enviar</button>
+      <button type="button" onClick="retrievePassword()" id="passwordRetriever">NO RECUERDO MI CONTRASEÑA</button>
+    </form>
+
+    <script type="text/javascript">
+      function retrievePassword(){
+        var newPassword = prompt('Introduce tu mail para recuperar tu contraseña')
+      }
+    </script>
+  </body>
+</html>
