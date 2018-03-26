@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://localhost:8080/css/estilos.css">
+    <link rel="stylesheet" href="http://localhost:8080/css/otros.css">
+    <link rel="stylesheet" href="http://localhost:8080/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://localhost:8080/bower_components/components-font-awesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="http://localhost:8080/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="http://localhost:8080/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="http://localhost:8080/bower_components/popper.js/dist/umd/popper.min.js"></script>
+    <title>Login en Geekshub travels</title>
+</head>
+<body>
+<nav id="menu" class="navbar fixed-top navbar-dark navbar-expand-lg navbar-template">
+    <a class="navbar-brand" href="#">GeeksHub Travels</a>
+    <div class="d-flex flex-row order-2 order-lg-3">
+        <ul id="rsociales" class="collapse navbar-collapse navbar-nav flex-row">
+            <li class="nav-item"><a class="nav-link px-2" href="#"><span class="fa fa-facebook"></span></a></li>
+            <li class="nav-item"><a class="nav-link px-2" href="#"><span class="fa fa-twitter"></span></a></li>
+            <li class="nav-item"><a class="nav-link px-2" href="#"><span class="fa fa-youtube"></span></a></li>
+            <li class="nav-item"><a class="nav-link px-2" href="#"><span class="fa fa-linkedin"></span></a></li>
+        </ul>
+        <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse order-3 order-lg-2" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="#">Destinos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Quienes somos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Dónde estamos</a></li>
+        </ul>
+    </div>
+</nav>
+<div id="pagina">
+<section class="acceso">
+    <div class="container">
+        <div class="registro">
+        <div class="signup-form-container">
+            <form role="form" id="register-form" autocomplete="off" action="login" method="post">
+                <div class="form-header">
+                    <h5 class="form-title"><i class="fa fa-user"></i>Identificarse</h5>
+                    <div class="pull-right">
+                        <h3 class="form-title"><span class="glyphicon glyphicon-pencil"></span></h3>
+                    </div>
+                </div>
+                <div class="form-body">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                            <input name="username" type="text" class="form-control" placeholder="Usuario">
+                        </div>
+                        <span class="help-block" id="error"></span>
+                    </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                                <input name="password" id="password" type="password" class="form-control" placeholder="Contraseña">
+                            </div>
+                            <span class="help-block" id="error1"></span>
+                        </div>
+                </div>
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-info" href="http://localhost:3000/login/">
+                        <span class="glyphicon glyphicon-log-in"></span>Validar
+                    </button>
+                    <hr>
+                    <button type="button" onClick="retrievePassword()" class="btn btn-info">
+                        <span class="glyphicon glyphicon-log-in"></span>No recuerdo mi contraseña
+
+                    </button>
+                    <br>
+                </div>
+            </form>
+        </div>
+        </div>
+        </div>
+</section>
+    <footer class="letrapeq">
+        <div class="row well text-light bg-dark">
+            <div class="col-md-1 col-sm-0 text-sm-left">
+            </div>
+            <div class="col-md-4 col-sm-6 text-sm-left">
+                <span>¿NECESITAS AYUDA?</span><br>0264 123 4567<br>
+                <a href="#" onclick="alert('Si es urgente llámanos ¡Gracias!');" class="text-white bg-dark" title="enquiry@geekshubstravels.com">enquiry@geekshubstravels.com
+                </a><br>
+                Lun-Vie: 9:30-19:00 Sab: 10:00-14:00
+            </div>
+            <div class="col-md-3 col-sm-6 text-sm-left">
+                <span>INFORMACIÓN</span> <br> Quienes somos <br> Preguntas frecuentes <br> Política de privacidad <br> Condiciones
+                generales <br> Aviso legal <br> Contacto <br> Programa de puntos <br>
+            </div>
+            <div class="col-md-4 col-sm-6 text-sm-left">
+                <span>SUSCRIBETE A LA NEWSLETTER</span>
+                <br>
+                <div class="form-group col-md-12">
+                    <input value="Correo electrónico" type="tel" class="form-control">
+
+                </div>
+                <div class="form-group col-md-12">
+                    <input type="hidden" name="save" value="contact">
+                    <button type="button" onclick="alert('Te has suscrito correctamente a nuestra Newsletter')" class="btn-info"><b>SUSCRIBETE</b></button>
+                </div>
+            </div>
+        </div>
+        <div id="sccial_mobile" class="container">
+            <div class="row bg-dark">
+                <div class="col"><a class="nav-link px-2" href="#"><span class="fa fa-twitter"></span></a></div>
+                <div class="col"><a class="nav-link px-2" href="#"><span class="fa fa-whatsapp"></span></a></div>
+                <div class="col"><a class="nav-link px-2" href="#"><span class="fa fa-facebook"></span></a></div>
+                <div class="col"><a class="nav-link px-2" href="#"><span class="fa fa-instagram"></span></a></div>
+                <div class="col"><a class="nav-link px-2" href="#"><span class="fa fa-linkedin"></span></a></div>
+                <div class="col"><a class="nav-link px-2" href="#"><span class="fa fa-youtube"></span></a></div>
+            </div>
+        </div>
+
+        <div class="row derechos">
+            <hr>
+            <div class="col-md-12 text-center text-light bg-dark text-white">
+                &copy; GeeksHubs Travels 2018 Todos los derechos reservados
+            </div>
+        </div>
+    </footer>
+</div>
+<script>
+    $(window).scroll(function(){
+        if($("#menu").offset().top >56) {
+            $("#menu").addClass("bg-dark");
+        }else{
+            $("#menu").removeClass("bg-dark");
+        }
+    });
+
+    function retrievePassword(){
+      var newPassword = prompt('Introduce tu mail para recuperar tu contraseña')
+    };
+
+    
+</script>
+
+</body>
+</html>
