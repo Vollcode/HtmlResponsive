@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/otros.css">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="bower_components/components-font-awesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="http://localhost:8080/css/estilos.css">
+    <link rel="stylesheet" href="http://localhost:8080/css/otros.css">
+    <link rel="stylesheet" href="http://localhost:8080/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://localhost:8080/bower_components/components-font-awesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/popper.js/dist/umd/popper.min.js"></script>
+    <script src="http://localhost:8080/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="http://localhost:8080/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="http://localhost:8080/bower_components/popper.js/dist/umd/popper.min.js"></script>
     <title>Registrarse en Geekshub travels</title>
 </head>
 <body>
@@ -39,7 +39,7 @@
     <div class="container">
         <div class="registro">
             <div class="signup-form-container">
-                <form role="form" id="register-form" autocomplete="off">
+                <form role="form" id="register-form" autocomplete="off" action="signup" method="post" onSubmit="return formValidation()">
                     <div class="form-header">
                         <h5 class="form-title"><i class="fa fa-user"></i>Registrarse</h5>
                         <div class="pull-right">
@@ -50,7 +50,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-                                <input name="name" type="text" class="form-control" placeholder="Usuario">
+                                <input name="username" type="text" class="form-control" placeholder="Usuario">
                             </div>
                             <span class="help-block" id="error"></span>
                         </div>
@@ -72,7 +72,7 @@
                             <div class="form-group col-lg-6">
                                 <div class="input-group">
                                     <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
-                                    <input name="cpassword" type="password" class="form-control" placeholder="Repetir Contraseña">
+                                    <input name="hash" id="hash" type="password" class="form-control" placeholder="Repetir Contraseña">
                                 </div>
                                 <span class="help-block" id="error2"></span>
                             </div>
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="form-footer">
-                        <button type="submit" class="btn btn-info">
+                        <button type="submit" class="btn btn-info" onClick="userSignUp()">
                             <span class="glyphicon glyphicon-log-in"></span>Validar
                         </button>
                         <br>
@@ -143,7 +143,7 @@
     </div>
 </footer>
 </div>
-<script>
+<script type="text/javascript">
     $(window).scroll(function(){
         if($("#menu").offset().top >56) {
             $("#menu").addClass("bg-dark");
@@ -151,6 +151,32 @@
             $("#menu").removeClass("bg-dark");
         }
     });
+
+    function checkPasswordValidity(){
+      var password = document.getElementById('password').value
+      var hash = document.getElementById('hash').value
+      if  (password == hash){
+        return true
+      } else{
+         alert('The passwords do not match!')
+         return false
+      }
+    }
+
+    function formValidation(){
+      if(checkPasswordValidity()) {
+        passwordEncryption()
+        return true
+      } else {
+        return false
+      }
+    }
+
+    function passwordEncryption(){
+      var password = document.getElementById('password').value
+      var encryptedPassword = password.split('').reverse().join('')
+      document.getElementById('hash').value = encryptedPassword
+    }
 </script>
 
 </body>

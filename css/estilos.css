@@ -129,7 +129,8 @@
 /* prueba controles*/
 
 #carrusel #control_dch{
-    color: black;
+  background-image : url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E")
+  color: black !important;
     /* height: 100px;
      width: 100px;
      outline: black;
@@ -138,15 +139,17 @@
      /*border-radius: 50%;
      border: 1px solid black;*/
 }
+
 /* fin prueba controles*/
 
 #primer_carousel{
     min-width: fit-content;
+    background-size: 100%;
+    background-size: cover;
 }
 
 #mobile{
     display: none;
-
 }
 #primer_carousel .carousel-control-prev-icon{
     display:none;
@@ -171,7 +174,21 @@ footer div.derechos {
     padding-top: 0px;
 }
 
+#footer-section {
+  padding-top: 1em;
+}
+#quien{
+  background:url("../assets/images/traveler.jpg")  no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
+#texto {
+  width: 40vw;
+
+}
 
 @media (max-width: 992px){
     #rsociales{
@@ -181,8 +198,8 @@ footer div.derechos {
 @media (max-width: 770px){
     #mobile{
         display: inline;
-
     }
+
     #desktop {
         display: none;
     }
@@ -205,10 +222,18 @@ footer div.derechos {
         transition:all 2s ease;
         position: fixed;
     }
+
     #donde{
         display: none;
     }
     #sccial_mobile{
         display: inline;
+    }
+    #texto {
+      width: 80vw;
+    }
+
+    #quien{
+      background-image: none;
     }
 }
