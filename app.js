@@ -3,17 +3,11 @@ const APP = EXPRESS()
 const PATH = require('path')
 const bodyParser = require("body-parser")
 const mysql = require('mysql')
-const hbs = require('express-handlebars')
+const hbs = require('hbs')
 
 APP.use(bodyParser.urlencoded({ extended: false }));
 APP.use(bodyParser.json());
 
-APP.engine( 'hbs', hbs( {
-  extname: 'hbs',
-  defaultLayout: 'main',
-  layoutsDir: __dirname + '/public/layouts/',
-  partialsDir: __dirname + '/public/partials/'
-} ) );
 APP.set( 'view engine', 'hbs' );
 
 APP.use('/bower_components', EXPRESS.static('bower_components'));
@@ -21,7 +15,10 @@ APP.use('/node_modules', EXPRESS.static('node_modules'));
 
 APP.use('/',EXPRESS.static(__dirname + '/'));
 
+hbs.registerPartials(`${__dirname}/partials`);
+
 APP.listen(3000, () =>{ console.log("Puerto 3000 levantado")});
+
 
 const db = mysql.createConnection({
   host: 'localhost',
@@ -39,11 +36,15 @@ function keepalive() {
 
 keepalive();
 
-APP.get('/',(req,res)=> res.sendFile(PATH.join(__dirname+'/index.html')));
+APP.get('/',(req,res)=> {res.render('index')});
 
-APP.get('/signup',(req,res)=> res.sendFile(PATH.join(__dirname+`/signup.html`)))
+// APP.get('/',(req,res)=> res.sendFile(PATH.join(__dirname+'/index.hbs')));
 
-APP.get('/login',(req,res)=> res.sendFile(PATH.join(__dirname+`/login.html`)))
+APP.get('/signup',(req,res)=> {res.render('signup')})
+// APP.get('/signup',(req,res)=> res.sendFile(PATH.join(__dirname+`/signup.hbs`)))
+
+APP.get('/login',(req,res)=> {res.render('login')})
+// APP.get('/login',(req,res)=> res.sendFile(PATH.join(__dirname+`/login.hbs`)))
 
 APP.post('/signup',(req,res)=>{
   let newUser = {username:req.body.username, email: req.body.email, password: req.body.password}
