@@ -1,0 +1,64 @@
+#estilo{
+    font-family: "Book Antiqua";
+    color: black;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    text-shadow: 1px 1px 1px black;
+    position: absolute;
+    top: 450px;
+}
+
+.btn-Home,
+.btn-Home:active {
+    padding-top: auto;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #007da7;
+}
+
+.btn-Home {
+    background-repeat: repeat-x;
+    background-image: linear-gradient(top, #009ED2 0%, #007DA7 100%);
+}
+
+.btn-Home:hover {
+    background-position: 0 -15px;
+}
+
+.btn-Contacto,
+.btn-Contacto:active {
+    padding-top: auto;
+    color: black;
+    font-weight: bold;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: white;
+}
+
+.btn-Contacto {
+    background-repeat: repeat-x;
+    background-image: linear-gradient(top, #009ED2 0%, #007DA7 100%);
+}
+
+.btn-Contacto:hover {
+    background-position: 0 -15px;
+}
+
+body {
+    background-image: url(/hugo/error404.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+}
+
+/*Mensajes modal css*/
+.modal-content{
+    background-color: rgba(251,251,251,0.6);
+}
+
+.modal-body{
+    font-weight: bold;
+}
