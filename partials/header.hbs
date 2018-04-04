@@ -11,6 +11,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
+   {{#if user}}
+     <h3>Hola, {{user}}!</h3>
+     <script>
+      localStorage.setItem("currentUser", {{user}});
+     </script>
+   {{/if}}
     <div class="collapse navbar-collapse order-3 order-lg-2" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a class="nav-link" href="http://localhost:3000/login">Login</a></li>
@@ -20,4 +26,9 @@
             <li class="nav-item"><a class="nav-link" href="#">Dónde estamos</a></li>
         </ul>
     </div>
+    <script>
+    // var url = new URL(window.location.href);
+    // var user = url.searchParams.get("fetchedUsername");
+    // document.getElementById("greeting").innerHTML = "Hola " + user +"! :)";
+  // </script>
 </nav>

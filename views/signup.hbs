@@ -67,9 +67,30 @@
                         </div>
                     </div>
                     <div class="form-footer">
-                        <button type="submit" class="btn btn-info" onClick="userSignUp()">
-                            <span class="glyphicon glyphicon-log-in"></span>Validar
+                        <!-- Botón Validar Registro -->
+                        <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#modalValidate" onClick="userSignUp()">
+                            Validar
                         </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalValidate" tabindex="-1" role="dialog" aria-labelledby="modalValidateTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalValidateLongTitle">Contraseña incorrecta</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Ambas contraseñas deben ser iguales para completar el proceso de registro correctamente
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <br>
                     </div>
                 </form>
@@ -88,13 +109,16 @@
         }
     });
 
+    $('#modalValidate').on('show', function(){
+      return formValidation();
+    });
+
     function checkPasswordValidity(){
       var password = document.getElementById('password').value
       var hash = document.getElementById('hash').value
       if  (password == hash){
         return true
       } else{
-         alert('The passwords do not match!')
          return false
       }
     }

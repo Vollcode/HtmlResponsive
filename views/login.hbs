@@ -47,10 +47,31 @@
                         <span class="glyphicon glyphicon-log-in"></span>Validar
                     </button>
                     <hr>
-                    <button type="button" onClick="retrievePassword()" class="btn btn-info">
-                        <span class="glyphicon glyphicon-log-in"></span>No recuerdo mi contraseña
-
+                    <!-- Botón No recuerdo mi contraseña -->
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalRememberPassword">
+                        No recuerdo mi contraseña
                     </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalRememberPassword" tabindex="-1" role="dialog" aria-labelledby="modalRememberPasswordTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalRememberPasswordLongTitle">Recuperación de contraseña</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="email" style="width:29em;height:2em" placeholder="Introduce tu email"/>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-info">Enviar</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <br>
                 </div>
             </form>
@@ -68,10 +89,6 @@
             $("#menu").removeClass("bg-dark");
         }
     });
-
-    function retrievePassword(){
-      var newPassword = prompt('Introduce tu mail para recuperar tu contraseña')
-    };
 </script>
 
 </body>

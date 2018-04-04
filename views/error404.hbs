@@ -19,63 +19,13 @@
         <div class="error404 col-md" id="estilo">
             <!--<h1>Error 404 - Página no encontrada</h1><br>-->
             <h1>Parece que ha habido un error, la página que estabas buscando se ha ido de viaje con GeeksHubs Travels</h1>
-            <button type="button" class="btn btn-Home"><i class="fas fa-home"></i>   Inicio</button>
-            <button type="button" class="btn btn-Contacto"><i class="fas fa-envelope"></i>   Contacto</button>
+
+            <form class="" action="/" method="get">
+              <button type="submit" class="btn btn-Home"><i class="fas fa-home"></i>   Inicio</button>
+              <button type="button" class="btn btn-Contacto"><i class="fas fa-envelope"></i>   Contacto</button>
+            </form>
         </div>
     </div>
 </div>
-
-<!-- Botón Validar Registro -->
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalValidate">
-    Validar
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="modalValidate" tabindex="-1" role="dialog" aria-labelledby="modalValidateTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalValidateLongTitle">Contraseña incorrecta</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Ambas contraseñas deben ser iguales para completar el proceso de registro correctamente
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Botón No recuerdo mi contraseña -->
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalRememberPassword">
-    No recuerdo mi contraseña
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="modalRememberPassword" tabindex="-1" role="dialog" aria-labelledby="modalRememberPasswordTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalRememberPasswordLongTitle">Recuperación de contraseña</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <input type="email" style="width:29em;height:2em" placeholder="Introduce tu email"/>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-info">Enviar</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 </body>
-
 </html>
