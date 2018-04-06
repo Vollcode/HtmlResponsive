@@ -1,3 +1,4 @@
+'use strict'
 const EXPRESS = require('express')
 const APP = EXPRESS()
 const PATH = require('path')
@@ -26,7 +27,12 @@ const db = mysql.createConnection({
   database: 'geekshubstravel'
 })
 
-keepalive();
+db.connect((err)=>{
+  if (err){
+    throw err;
+  }
+  console.log('Mysql connected...')
+})
 
 APP.get('/',(req,res)=> {res.render('index')});
 
@@ -59,10 +65,3 @@ APP.get('/loginAccepted/:fetchedUsername',(req,res)=> res.sendFile(PATH.join(__d
 APP.get('/destinations/:city',(req,res)=> res.sendFile(PATH.join(__dirname+`/public/${req.params.city}.html`)));
 
 APP.get('*', (req, res) => {res.render('error404')});
-
-function keepalive() {
-  db.query('select 1', [], function(err, result) {
-    if(err) return console.log(err);
-    console.log('Successful keepalive.');
-  });
-}
