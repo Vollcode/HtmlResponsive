@@ -11,21 +11,13 @@ APP.use(bodyParser.json());
 
 APP.set( 'view engine', 'hbs' );
 
-APP.use('/bower_components', EXPRESS.static('bower_components'));
-APP.use('/node_modules', EXPRESS.static('node_modules'));
-
 APP.use('/',EXPRESS.static(__dirname + '/'));
 
 hbs.registerPartials(`${__dirname}/partials`);
 
 APP.listen(3000, () =>{ console.log("Puerto 3000 levantado")});
 
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'mysql',
-  database: 'geekshubstravel'
-})
+const db = require('./database/dbConnection')
 
 db.connect((err)=>{
   if (err){
@@ -41,7 +33,7 @@ APP.get('/signup',(req,res)=> {res.render('signup')})
 APP.get('/login',(req,res)=> {res.render('login')})
 
 APP.post('/signup',(req,res)=>{
-  let newUser = {username:req.body.username, email: req.body.email, password: req.body.password}
+  let newUser = {username:req.body.username, email: req.body.email, password: req.body.password, hash: req.body.hash}
   let sql = 'INSERT INTO user SET ?';
   let query = db.query(sql, newUser,(err,result)=>{
     if(err) throw err;

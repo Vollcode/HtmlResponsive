@@ -9,4 +9,4 @@ sudo apt-get -y install nodejs
 sudo apt-get -y install nodejs-legacy
 sudo apt-get -y install npm
 
-sudo mysql -uroot -pmysql < /vagrant/nodemysql.sql
+sudo mysql -uroot -pmysql < /vagrant/database/nodemysql.sql
