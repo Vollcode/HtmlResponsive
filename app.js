@@ -3,13 +3,24 @@ const EXPRESS = require('express')
 const APP = EXPRESS()
 const PATH = require('path')
 const bodyParser = require("body-parser")
-const mysql = require('mysql')
 const hbs = require('hbs')
+const session = require('express-sessions')
+
+
+var winston = require('./config/winston')
+
+var login = require('./routes/login')
+var admin = require('./routes/admin')
+
+APP.use('/admin', admin)
+APP.use('/login', login)
+
 
 APP.use(bodyParser.urlencoded({ extended: false }));
 APP.use(bodyParser.json());
 
 APP.set( 'view engine', 'hbs' );
+
 
 APP.use('/',EXPRESS.static(__dirname + '/'));
 
@@ -19,14 +30,8 @@ APP.listen(3000, () =>{ console.log("Puerto 3000 levantado")});
 
 const db = require('./database/dbConnection')
 
-db.connect((err)=>{
-  if (err){
-    throw err;
-  }
-  console.log('Mysql connected...')
-})
-
 APP.get('/',(req,res)=> {res.render('index')});
+
 
 APP.get('/signup',(req,res)=> {res.render('signup')})
 
