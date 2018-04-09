@@ -2,6 +2,7 @@
 let db=require('../database/dbConnection');
 let travel={};
 
+// REcoger todos los destinos
 travel.fetchAll=(cb)=>{
     if(!db) return cb("Error en la conexión");
     var sql="SELECT * FROM travel";
@@ -11,6 +12,7 @@ travel.fetchAll=(cb)=>{
     })
 }
 
+//Recoger un destino
 travel.fetchSingle=(city,cb)=>{
     if(!db) return cb("Error en la conexión");
     else {
@@ -21,6 +23,7 @@ travel.fetchSingle=(city,cb)=>{
     }
 }
 
+//Recoger los destinos activos
 travel.fetchActive=(cb)=>{
     if(!db) return cb("Error en la conexión");
     var sql="SELECT * FROM travel WHERE active=1";
@@ -30,6 +33,7 @@ travel.fetchActive=(cb)=>{
     })
 }
 
+//Activar/desactivar destinos
 travel.updateActive=(id,cb)=>{
     if(!db) return cb("Error en la conexión");
     db.query("SELECT * FROM travel WHERE id=?",id,function (error,result) {
@@ -51,6 +55,7 @@ travel.updateActive=(id,cb)=>{
     })
 }
 
+//Borrar destinos
 travel.deleteTravel=(id,cb)=>{
     if(!db) return cb("Error en la conexión");
     db.query("SELECT * FROM travel WHERE id=?",id,function (error,result) {
@@ -63,7 +68,7 @@ travel.deleteTravel=(id,cb)=>{
         }
     })
 }
-
+//Crear destinos
 travel.insertTravel=(travel,cb)=>{
     if(!db) return cb("Error en la conexión");
     else {
