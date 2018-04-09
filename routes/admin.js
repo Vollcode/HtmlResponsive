@@ -1,9 +1,31 @@
+'use strict'
 var express = require('express');
 var router = express.Router();
+var userModel = require('../models/userModel');
+var travelModel = require('../models/travelModel');
 
-router.get('/',(req,res,next)=>{
-  res.status(200).json(req.session.isAdmin || 'La sesion no se ha creado')
+router.get('/', function(req, res, next) {
+    travelModel.fetchAll((error,travels)=>{
+        if(error) return res.status(500).json(error);
+        else{
+            let isAdmin=req.session.isAdmin;
+            if(req.session.isAdmin==1){
+                res.render('adminPanel',{
+                    title:"Travel Panel",
+                    isLogged : req.session.isLogged,
+                    isAdmin : req.session.isAdmin,
+                    user : req.session.username,
+                    travels
+                })
+            }
+            else{
+                res.redirect('/')
+            }
+        }
+    })
 })
+
+//Ejemplos de clase, no es codigo de producción
 
 router.get('/create', (req,res,next)=>{
   req.session.username="xrodriguez";

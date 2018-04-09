@@ -18,21 +18,6 @@
     top:50%;
     transform: translateY(-50%);
 }
-/* prueba imagen carousel
- #primer_carousel .carousel-inner .carousel-item  {
-    height: 100vh;
-}
-.carousel-inner > .carousel-item > img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    max-height: 800px;
-    width: auto;
-}
- fin prueba imagen carousel*/
 
 .hovereffect {
     width:100%;
@@ -183,6 +168,12 @@ footer div.derechos {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+#destination {
+  margin-top: 1em;
+  margin-bottom: 1em;
+
 }
 
 #texto {
