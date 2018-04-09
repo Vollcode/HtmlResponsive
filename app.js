@@ -16,6 +16,7 @@ var index = require('./routes/index');
 const APP = EXPRESS()
 
 APP.use('/',EXPRESS.static(__dirname + '/'));
+APP.use(EXPRESS.static(PATH.join(__dirname, 'public')));
 APP.set( 'view engine', 'hbs' );
 
 hbs.registerPartials(`${__dirname}/partials`);
@@ -38,3 +39,4 @@ APP.use('/admin', admin)
 APP.use('/', index)
 
 APP.listen(3000, () =>{ console.log("Puerto 3000 levantado")});
+
