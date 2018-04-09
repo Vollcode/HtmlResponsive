@@ -18,8 +18,6 @@ router.get('/', (req,res,next)=>{
 })
 
 router.get('/destination/:city', (req,res,next)=>{
-  console.log('-----------')
-  console.log(req.params.city)
   travelModel.fetchSingle(req.params.city,(error,travels)=>{
     console.log(travels)
     if(error) return res.status(500).json(error);

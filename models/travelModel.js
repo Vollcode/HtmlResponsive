@@ -14,8 +14,6 @@ travel.fetchAll=(cb)=>{
 travel.fetchSingle=(city,cb)=>{
     if(!db) return cb("Error en la conexión");
     else {
-      console.log('**********')
-      console.log(city)
       db.query("SELECT * FROM travel WHERE city=?",[city], (error,result)=>{
         if(error) return cb(error);
         else return cb(null,result);
@@ -66,10 +64,10 @@ travel.deleteTravel=(id,cb)=>{
     })
 }
 
-travel.insertTravel=(destination,cb)=>{
+travel.insertTravel=(travel,cb)=>{
     if(!db) return cb("Error en la conexión");
     else {
-        db.query('INSERT INTO travel SET ?', destination, (error, result) => {
+        db.query('INSERT INTO travel SET ?', travel, (error, result) => {
             if (error) return cb(error);
             return cb(null, result);
         })
