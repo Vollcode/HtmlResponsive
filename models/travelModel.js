@@ -21,7 +21,7 @@ travel.fetchSingle = (city, cb) => {
             else return cb(null, result);
         })
     }
-}
+};
 
 //Recoger un destino por id
 travel.fetchSingleById = (id, cb) => {

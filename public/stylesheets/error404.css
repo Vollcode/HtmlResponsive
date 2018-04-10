@@ -46,7 +46,7 @@
 }
 
 body {
-    background-image: url(/assets/images/error404.jpg);
+    background-image: url(/public/images/backgrounds/error404.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;

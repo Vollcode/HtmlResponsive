@@ -114,7 +114,7 @@
 /* prueba controles*/
 
 #carrusel #control_dch{
-  background-image : url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E")
+  background-image : url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='black' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
   color: black !important;
     /* height: 100px;
      width: 100px;
@@ -163,7 +163,7 @@ footer div.derechos {
   padding-top: 1em;
 }
 #quien{
-  background:url("../assets/images/traveler.jpg")  no-repeat center center;
+  background:url("../images/backgrounds/traveler.jpg")  no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

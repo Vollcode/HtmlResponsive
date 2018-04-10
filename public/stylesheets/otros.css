@@ -10,7 +10,7 @@ footer span {
     height: 100%;
     position: relative;
     align-content: center;
-    background-image: url("../assets/images/mountains.png");
+    background-image: url("/public/images/backgrounds/mountains.png");
 }
 #pagina{
   height:75vh;

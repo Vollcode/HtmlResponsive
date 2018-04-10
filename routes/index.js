@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 var express = require('express');
 var router = express.Router();
 var userModel = require('../models/userModel');
@@ -15,7 +15,7 @@ router.get('/', (req,res,next)=>{
         travels
       })
   })
-})
+});
 
 router.get('/destination/:city', (req,res,next)=>{
   travelModel.fetchSingle(req.params.city,(error,travels)=>{
@@ -32,7 +32,7 @@ router.get('/destination/:city', (req,res,next)=>{
         res.redirect('/')
       }
   })
-})
+});
 
 router.get('/login', function(req, res, next) {
     res.render('login',
