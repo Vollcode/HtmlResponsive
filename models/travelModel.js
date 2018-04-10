@@ -2,7 +2,7 @@
 let db = require('../database/dbConnection');
 let travel = {};
 
-// REcoger todos los destinos
+// Recoger todos los destinos
 travel.fetchAll = (cb) => {
     if (!db) return cb("Error en la conexión");
     var sql = "SELECT * FROM travel";
@@ -12,7 +12,7 @@ travel.fetchAll = (cb) => {
     })
 }
 
-//Recoger un destino
+//Recoger un destino por ciudad
 travel.fetchSingle = (city, cb) => {
     if (!db) return cb("Error en la conexión");
     else {
@@ -44,27 +44,6 @@ travel.fetchActive = (cb) => {
     })
 }
 
-//Activar/desactivar destinos
-travel.updateActive = (id, cb) => {
-    if (!db) return cb("Error en la conexión");
-    db.query("SELECT * FROM travel WHERE id=?", id, function (error, result) {
-        if (error) return cb(error);
-        else {
-            let currentValue = result[0].active;
-            if (currentValue == 1) {
-                currentValue = 0;
-            }
-            else {
-                currentValue = 1;
-            }
-            db.query("UPDATE travel SET active=" + currentValue + " where id=?", id, function (error, result) {
-                if (error) return cb(error);
-                return cb(null, result);
-
-            })
-        }
-    })
-}
 
 //Actualiza un destino
 travel.update = (travel, cb) => {

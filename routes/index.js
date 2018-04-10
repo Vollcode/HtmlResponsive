@@ -19,7 +19,6 @@ router.get('/', (req,res,next)=>{
 
 router.get('/destination/:city', (req,res,next)=>{
   travelModel.fetchSingle(req.params.city,(error,travels)=>{
-    console.log(travels)
     if(error) return res.status(500).json(error);
       if (req.session.isUserLogged == 1) {
         res.render('destination',{
@@ -30,7 +29,7 @@ router.get('/destination/:city', (req,res,next)=>{
         })
       }
       else {
-        res.render('/')
+        res.redirect('/')
       }
   })
 })
@@ -47,40 +46,6 @@ router.get('/signup', function(req, res, next) {
         {
             title: 'User SignUp',
         })
-})
-
-router.post('/login', function (req,res) {
-    let user={ username:req.body.username, password:req.body.password }
-
-    userModel.login(user,function (error,result) {
-        if(error) res.status(500).json(error);
-
-        switch (result) {
-            case 1:
-                res.render('login', {
-                    title: "Login incorrecto",
-                })
-                break;
-            case 2:
-                if(user.username=='admin'){
-                    req.session.username="admin";
-                    req.session.isUserLogged=1;
-                    req.session.isAdmin=1;
-                }
-                else{
-                    req.session.username=user.username;
-                    req.session.isUserLogged=1;
-                    req.session.isAdmin=0;
-                }
-                res.redirect('/');
-                break;
-        }
-    })
-})
-
-router.get('/destroy',(req,res,next)=>{
-    req.session.destroy();
-    res.redirect('/');
 })
 
 router.post('/signup', function (req, res) {
@@ -105,6 +70,40 @@ router.post('/signup', function (req, res) {
                 break;
         }
     })
+})
+
+router.post('/login', function (req,res) {
+    let user={ username:req.body.username, password:req.body.password }
+
+    userModel.login(user,function (error,result) {
+        if(error) res.status(500).json(error);
+
+        switch (result) {
+            case 1:
+                res.render('login', {
+                    title: "Login incorrecto",
+                })
+                break;
+            case 2:
+                if(user.username=='admin'){
+                    req.session.username="admin";
+                    req.session.isUserLogged=1;
+                    req.session.isAdmin=1;
+                }
+                else{
+                    req.session.isAdmin=0;
+                    req.session.username=user.username;
+                    req.session.isUserLogged=1;
+                }
+                res.redirect('/');
+                break;
+        }
+    })
+})
+
+router.get('/destroy',(req,res,next)=>{
+    req.session.destroy();
+    res.redirect('/');
 })
 
 router.get('*', function(req, res) {

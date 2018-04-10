@@ -14,9 +14,9 @@ router.get('/', function(req, res, next) {
                 res.render('listaDestinos',{
                     layout: 'admin',
                     title:"Travel Panel",
-                    isLogged : req.session.isLogged,
-                    isAdmin : req.session.isAdmin,
                     user : req.session.username,
+                    isAdmin : req.session.isAdmin,
+                    isLogged : req.session.isLogged,
                     travels
                 })
             }
