@@ -3,30 +3,30 @@
         <div class="container">
             <div class="d-flex justify-content-center align-items-center">
                 {{#if result}}
-                    <form method='post' action="/admin/editar-destino">
+                    <form method='post' action="/admin/editar-usuario">
                         <div>
-                            <h3>EDITAR DESTINO</h3>
+                            <h3>EDITAR USUARIO</h3>
                         </div>
                         <div>
                             <input type="hidden" name="id" value="{{result.id}}">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-sm" name="travel"
-                                   value="{{result.city}}">
+                            <input type="text" class="form-control form-control-sm" name="username"
+                                   value="{{result.username}}">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-sm" name="description"
-                                   value="{{result.description}}">
+                            <input type="text" class="form-control form-control-sm" name="email"
+                                   value="{{result.email}}">
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col">
-                                    <input type="text" class="form-control form-control-sm" value="{{result.type}}"
-                                           name="type">
+                                    <input type="text" class="form-control form-control-sm" value="{{result.password}}"
+                                           name="password">
                                 </div>
                                 <div class="col">
-                                    <input type="number" class="form-control form-control-sm" value="{{result.price}}"
-                                           name="price">
+                                    <input type="number" class="form-control form-control-sm" value="{{result.hash}}"
+                                           name="hash">
                                 </div>
                             </div>
                         </div>
@@ -36,15 +36,11 @@
                                 <input class="form-check-input" type="checkbox" name="active"
                                     {{#if result.active}}
                                        checked
-                                    {{/if}}">
+                                    {{/if}}>
                                     <label class="form-check-label" for="gridCheck">
                                         Activo
                                     </label>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control form-control-sm" value="{{result.image}}"
-                                       name="path">
                             </div>
                         </div>
                         <div class="d-flex justify-content-end form-group">

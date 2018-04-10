@@ -2,28 +2,27 @@
     <div class="wrapper">
         <div class="container">
             <div class="row">
-                <a href="/admin/crear-destino" class="btn btn-primary btn-sm">Nuevo Destino</a>
+                <a href="/admin/crear-usuario" class="btn btn-primary btn-sm">Nuevo Usuario</a>
             </div>
             <div class="row" class="rowTable">
-                {{#if travels.length}}
+                {{#if users.length}}
                     <table class="table table-sm">
                         <tr>
-                            <td>Destino</td>
-                            <td>Descripción</td>
-                            <td>Tipo</td>
-                            <td>Precio</td>
+                            <td>Usuario</td>
+                            <td>Email</td>
+                            <td>Password</td>
+                            <td>Hash</td>
                             <td>Activo</td>
-                            <td>Ruta</td>
-                            <td>Imagen</td>
+                            <td>isAdmin</td>
                             <td>Editar</td>
                             <td>Eliminar</td>
                         </tr>
-                        {{#each travels}}
+                        {{#each users}}
                             <tr>
-                                <td>{{city}}</td>
-                                <td>{{description}}</td>
-                                <td>{{type}}</td>
-                                <td>{{price}}</td>
+                                <td>{{username}}</td>
+                                <td>{{email}}</td>
+                                <td>{{password}}</td>
+                                <td>{{hash}}</td>
                                 <td>
                                     {{#if active}}
                                         <i class="fa fa-check" aria-hidden="true"></i>
@@ -31,11 +30,16 @@
                                         <i class="fa fa-times" aria-hidden="true"></i>
                                     {{/if}}
                                 </td>
-                                <td>{{image}}</td>
-                                <td><img src="{{image}}" alt="{{travel}}" class="detalleImagen"></td>
-                                <td><a href="/admin/abrir-destino/{{id}}"><i class="fa fa-pencil-square-o edit"
+                                <td>
+                                  {{#if isAdmin}}
+                                      <i class="fa fa-check" aria-hidden="true"></i>
+                                  {{else}}
+                                      <i class="fa fa-times" aria-hidden="true"></i>
+                                  {{/if}}
+                                </td>
+                                <td><a href="/admin/abrir-usuario/{{id}}"><i class="fa fa-pencil-square-o edit"
                                                                              aria-hidden="true"></i></a></td>
-                                <td><a href="/admin/eliminar-destino/{{id}}"><i class="fa fa-trash-o remove"
+                                <td><a href="/admin/eliminar-usuario/{{id}}"><i class="fa fa-trash-o remove"
                                                                                 aria-hidden="true"></i></a></td>
                             </tr>
                         {{/each}}

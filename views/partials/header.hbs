@@ -16,16 +16,27 @@
    {{/if}}
     <div class="collapse navbar-collapse order-3 order-lg-2" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-
           {{#if user}}
-            <li class="nav-item"><a class="nav-link" href="http://localhost:8080/admin">Admin</a></li>
+            {{#if isAdmin}}
+              <div class="dropdown">
+                <button class="dropbtn">Admin</button>
+                <div class="dropdown-content">
+                  <a href="http://localhost:8080/admin/destinos">Destination Panel</a>
+                  <a href="http://localhost:8080/admin/users">User Panel</a>
+                </div>
+              </div>
+            {{/if}}
             <li class="nav-item"><a class="nav-link" href="http://localhost:8080/destroy">Logout</a></li>
-          {{/if}}
+            <li class="nav-item"><a class="nav-link" href="#">Destinos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Quienes somos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Dónde estamos</a></li>
+          {{else}}
             <li class="nav-item"><a class="nav-link" href="http://localhost:8080/login">Login</a></li>
             <li class="nav-item"><a class="nav-link" href="http://localhost:8080/signup">Registrarse</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Destinos</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Quienes somos</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Dónde estamos</a></li>
+          {{/if}}
         </ul>
     </div>
 </nav>

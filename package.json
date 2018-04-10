@@ -36,6 +36,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "bower install && npm install && vagrant up",
     "production": "forever app.js",
     "list": "forever list",
     "stop": "forever stop 0"
