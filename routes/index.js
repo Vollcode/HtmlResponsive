@@ -1,19 +1,7 @@
-'use strict';
 var express = require('express');
 var router = express.Router();
 var userModel = require('../models/userModel');
 var travelModel = require('../models/travelModel');
-
-//Attachments
-router.get('/sendAttachment',(req,res,next)=>{
-  let message = {
-    to: 'daniel@gmail.com',
-    subject: 'Testeo',
-    html:'<p>Prueba</p>',
-    attachment: ''
-  }
-})
-
 
 
 router.get('/', (req,res,next)=>{
@@ -117,9 +105,10 @@ router.get('/destroy',(req,res,next)=>{
     req.session.destroy();
     res.redirect('/');
 })
-
+/*
 router.get('*', function(req, res) {
     res.render('error404');
 })
+*/
 
 module.exports = router;
