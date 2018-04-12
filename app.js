@@ -34,9 +34,9 @@ APP.use(bodyParser.urlencoded({ extended: false }));
 
 APP.use(cookieParser());
 
+APP.use('/emailer',emailer);
 APP.use('/admin', admin);
 APP.use('/', index);
-APP.use('/emailer',emailer);
 
 
 
