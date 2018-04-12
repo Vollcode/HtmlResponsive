@@ -1,8 +1,8 @@
-'use strict';
 var express = require('express');
 var router = express.Router();
 var userModel = require('../models/userModel');
 var travelModel = require('../models/travelModel');
+
 
 router.get('/', (req,res,next)=>{
   travelModel.fetchActive((error,travels)=>{
@@ -105,9 +105,10 @@ router.get('/destroy',(req,res,next)=>{
     req.session.destroy();
     res.redirect('/');
 })
-
+/*
 router.get('*', function(req, res) {
     res.render('error404');
 })
+*/
 
 module.exports = router;

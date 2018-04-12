@@ -1,17 +1,16 @@
-'use strict'
 const EXPRESS = require('express');
 const PATH = require('path');
 const bodyParser = require("body-parser");
 const hbs = require('hbs');
 const session = require('express-session');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
+let winston = require('./config/winston');
 
-var winston = require('./config/winston');
-
-var admin = require('./routes/admin');
-var index = require('./routes/index');
+let admin = require('./routes/admin');
+let index = require('./routes/index');
+let emailer = require('./routes/emailer');
 
 const APP = EXPRESS();
 
@@ -37,6 +36,9 @@ APP.use(cookieParser());
 
 APP.use('/admin', admin);
 APP.use('/', index);
+APP.use('/emailer',emailer);
+
+
 
 APP.listen(3000, () =>{ console.log("Puerto 3000 levantado")});
 
