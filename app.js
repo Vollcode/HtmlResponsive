@@ -8,8 +8,34 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 
-var winston = require('./config/winston');
+// var sequelize = require('./config/connector')
+//
+// sequelize.authenticate()
+//     .then(()=> {
+//       console.log('Connection has been established successfully')
+//     })
+//     .catch(error => {
+//       console.error('Error in connecting to the database: ', error)
+//     })
+//
+// const Usuario = sequelize.define('user', {
+//   firstName: {
+//     type: Sequelize.STRING
+//   },
+//   lastName: {
+//     type: Sequelize.STRING
+//   }
+// })
+//
+// User.sync({force: true}).then(() => {
+//   return User.create({
+//     firstName: 'John',
+//     lastName: 'Wick'
+//   })
+// })
 
+var winston = require('./config/winston');
+var multer = require('./routes/multer')
 var admin = require('./routes/admin');
 var index = require('./routes/index');
 
@@ -35,8 +61,8 @@ APP.use(bodyParser.urlencoded({ extended: false }));
 
 APP.use(cookieParser());
 
+APP.use('/multer', multer)
 APP.use('/admin', admin);
 APP.use('/', index);
 
 APP.listen(3000, () =>{ console.log("Puerto 3000 levantado")});
-

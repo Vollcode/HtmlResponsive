@@ -72,13 +72,13 @@ user.update = (user, cb) => {
 
     if (!db) return cb("Error en la conexión");
 
-    let sql = "update user set username='"+user.username+"', email='"+user.email+"', password='"+user.password+"', active="+user.active+", hash='"+user.hash+"' where id="+user.id+";";
-
+    let sql = "update user set username='"+user.username+"', email='"+user.email+"', password='"+user.password+"', hash='"+user.hash+"',isAdmin=0, active="+user.active+" where id="+user.id+";";
     db.query(sql, (err, result)=>{
         if(err) return cb(err);
         else return cb(null, result);
     });
 }
+
 
 //Borrar usuarios
 user.deleteUser = (id, cb) => {

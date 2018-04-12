@@ -4,6 +4,8 @@ var router = express.Router();
 var userModel = require('../models/userModel');
 var travelModel = require('../models/travelModel');
 let db = require('../database/dbConnection');
+const Multer = require('multer');
+const upload = require('../config/multer')
 
 //Destination endpoints
 
@@ -37,7 +39,7 @@ router.get('/crear-destino', (req, res, next)=>{
 });
 
 //guarda un destino
-router.post('/guardar-destino', (req, res, next)=>{
+router.post('/guardar-destino', upload.single('file'), (req, res, next)=>{
     var active;
     req.body.active === 'on' ? active = 1 : active = 0;
 
@@ -47,7 +49,7 @@ router.post('/guardar-destino', (req, res, next)=>{
     destino.type = req.body.type;
     destino.active = active;
     destino.price = req.body.price;
-    destino.image = req.body.path;
+    destino.image = "/" + req.file.path;
 
     travelModel.insertTravel(destino, (error, insertID)=>{
        if(insertID){
@@ -59,7 +61,7 @@ router.post('/guardar-destino', (req, res, next)=>{
 });
 
 //edita un destino
-router.post('/editar-destino', (req, res, next)=>{
+router.post('/editar-destino',upload.single('file'), (req, res, next)=>{
     var active;
     req.body.active === 'on' ? active = 1 : active = 0;
 
@@ -70,7 +72,7 @@ router.post('/editar-destino', (req, res, next)=>{
     destino.type = req.body.type;
     destino.active = active;
     destino.price = req.body.price;
-    destino.image = req.body.path;
+    destino.image = "/" + req.file.path;
 
     travelModel.update(destino, (error, result)=>{
         if(result){
@@ -171,12 +173,18 @@ router.post('/editar-usuario', (req, res, next)=>{
     usuario.password = req.body.password;
     usuario.hash = req.body.hash;
     usuario.active = active;
+    console.log(req.body)
+    console.log(req.body.username)
+    console.log(req.body.email)
+    console.log(req.body.password)
+    console.log(req.body.hash)
+
 
     userModel.update(usuario, (error, result)=>{
         if(result){
             res.redirect('/admin/users');
         } else {
-            res.status(500).json('Error al editar usuario'+ error);
+            res.status(500).json('Error al editar usuario '+ error);
         }
     });
 });

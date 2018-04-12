@@ -4,6 +4,18 @@ var router = express.Router();
 var userModel = require('../models/userModel');
 var travelModel = require('../models/travelModel');
 
+//Attachments
+router.get('/sendAttachment',(req,res,next)=>{
+  let message = {
+    to: 'daniel@gmail.com',
+    subject: 'Testeo',
+    html:'<p>Prueba</p>',
+    attachment: ''
+  }
+})
+
+
+
 router.get('/', (req,res,next)=>{
   travelModel.fetchActive((error,travels)=>{
     if(error) return res.status(500).json(error);
@@ -49,7 +61,7 @@ router.get('/signup', function(req, res, next) {
 })
 
 router.post('/signup', function (req, res) {
-    let user={ username:req.body.username, email:req.body.email, password:req.body.password}
+    let user={ username:req.body.username, email:req.body.email, password:req.body.password, hash:req.body.hash}
     userModel.signUp(user,function (error,result) {
         if(error) res.status(500).json(error);
         switch (result){
