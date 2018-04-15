@@ -48,39 +48,42 @@
                     </button>
                     <hr>
                     <!-- Botón No recuerdo mi contraseña -->
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalRememberPassword">
-                        No recuerdo mi contraseña
-                    </button>
+                      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalRememberPassword">
+                          No recuerdo mi contraseña
+                      </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="modalRememberPassword" tabindex="-1" role="dialog" aria-labelledby="modalRememberPasswordTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalRememberPasswordLongTitle">Recuperación de contraseña</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <input type="email" style="width:29em;height:2em" placeholder="Introduce tu email"/>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-info">Enviar</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
                 </div>
             </form>
         </div>
         </div>
         </div>
+        <p id="RememberPasswordSuccess" align="center">SE TE HA ENVIADO UN CORREO PARA CAMBIAR LA CONTRASEÑA</p>
+        <p id="RememberPasswordError" align="center">NO SE HA ENCONTRADO EL CORREO INTRODUCIDO</p>
 </section>
 </div>
   {{> footer }}
+  <form id="myForm" method="post">
+  <div class="modal fade" id="modalRememberPassword" tabindex="-1" role="dialog" aria-labelledby="modalRememberPasswordTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalRememberPasswordLongTitle">Recuperación de contraseña</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+          <div class="modal-body">
+            <input type="email" name="email" style="width:29em;height:2em" id="myField" placeholder="Introduce tu email"/>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" id="myFormSubmit">Enviar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</form>
 <script>
     $(window).scroll(function(){
         if($("#menu").offset().top >56) {
@@ -89,6 +92,21 @@
             $("#menu").removeClass("bg-dark");
         }
     });
+
+    $('#myFormSubmit').click(function(e){
+      e.preventDefault();
+      var newEmail= $('#myForm').serialize();
+      $.post('http://localhost:8080/emailer/forgotPassword',
+         newEmail,
+         function(data, status, xhr){
+           if(status == 'success') {
+             $('#RememberPasswordSuccess').show();
+           } else {
+             $('#RememberPasswordError').show();
+           }
+         });
+      $('#modalRememberPassword').modal('hide');
+});
 </script>
 
 </body>

@@ -173,12 +173,6 @@ router.post('/editar-usuario', (req, res, next)=>{
     usuario.password = req.body.password;
     usuario.hash = req.body.hash;
     usuario.active = active;
-    console.log(req.body)
-    console.log(req.body.username)
-    console.log(req.body.email)
-    console.log(req.body.password)
-    console.log(req.body.hash)
-
 
     userModel.update(usuario, (error, result)=>{
         if(result){

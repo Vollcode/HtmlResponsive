@@ -270,3 +270,15 @@ footer div.derechos {
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
+
+#RememberPasswordError {
+  display: none;
+}
+
+#RememberPasswordSuccess {
+  display: none;
+}
+
+#accesoRecuperarPassword {
+  padding-top: 10em;
+}

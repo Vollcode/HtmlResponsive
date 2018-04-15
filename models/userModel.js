@@ -54,6 +54,17 @@ user.fetchSingleById = (id, cb) => {
     }
 }
 
+//Recoger un usuario por email
+user.fetchSingleByEmail = (email, cb) => {
+    if (!db) return cb("Error en la conexión");
+    else {
+        db.query("SELECT * FROM user WHERE email=?", [email], (error, result) => {
+            if (error) return cb(error);
+            else return cb(null, result);
+        })
+    }
+}
+
 //Recoger los usuarios activos
 user.fetchActive = (cb) => {
     if (!db) return cb("Error en la conexión");
@@ -65,7 +76,7 @@ user.fetchActive = (cb) => {
 }
 
 
-//Actualiza un destino
+//Actualiza un usuario
 user.update = (user, cb) => {
     var active;
     user.active === 'on' ? active = 1 : active = 0;
@@ -79,6 +90,16 @@ user.update = (user, cb) => {
     });
 }
 
+//Actualiza un password de usuario
+user.updatePassword = (user, cb) => {
+    if (!db) return cb("Error en la conexión");
+
+    let sql = "update user set password='"+user.password+"' where id="+user.id+";";
+    db.query(sql, (err, result)=>{
+        if(err) return cb(err);
+        else return cb(null, result);
+    });
+}
 
 //Borrar usuarios
 user.deleteUser = (id, cb) => {
