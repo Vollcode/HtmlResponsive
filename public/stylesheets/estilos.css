@@ -282,3 +282,26 @@ footer div.derechos {
 #accesoRecuperarPassword {
   padding-top: 10em;
 }
+
+.success, .error{
+border: 1px solid;
+margin: 10px 0px;
+padding:15px 10px 15px 50px;
+background-repeat: no-repeat;
+background-position: 10px center;
+font-family:Arial, Helvetica, sans-serif;
+font-size:13px;
+max-width: 10em;
+}
+
+.success {
+color: #4F8A10;
+background-color: #DFF2BF;
+background-image:url('/public/images/icons/checked.png');
+}
+
+.error {
+color: #D8000C;
+background-color: #FFBABA;
+background-image: url('/public/images/icons/cancel.png');
+}

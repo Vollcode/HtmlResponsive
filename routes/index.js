@@ -129,17 +129,23 @@ router.post('/recuperarPassword', (req,res,next)=>{
   user.password = req.body.password
   userModel.updatePassword(user, (error, result)=>{
       if(result){
-          res.redirect('/login');
+          res.redirect('/passwordCambiado');
       } else {
           res.status(500).json('Error al editar usuario '+ error);
       }
   });
 });
 
-/*
+router.get('/passwordCambiado', function(req, res, next) {
+    res.render('passwordCambiado',
+        {
+            title: 'Cambio de Password',
+        })
+})
+
+
 router.get('*', function(req, res) {
     res.render('error404');
 })
-*/
 
 module.exports = router;

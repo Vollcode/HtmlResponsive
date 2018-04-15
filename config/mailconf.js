@@ -1,17 +1,15 @@
 const NMAILER = require('nodemailer');
 
-
-
 let email= {} ;
 email.transporter = NMAILER.createTransport({
     service: 'Gmail',
     auth: {
-        user: process.env.USUARIO,
-        pass: process.env.PASSWORD
+        user: 'daniel.ortiz.olivares@gmail.com',
+        pass: 'elemshardish'
     }
     },
     {
-        from:process.env.USUARIO,
+        from:'irememberwhat8@gmail.com',
         headers:{
         }
 
