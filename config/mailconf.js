@@ -4,8 +4,8 @@ let email= {} ;
 email.transporter = NMAILER.createTransport({
     service: 'Gmail',
     auth: {
-        user: 'daniel.ortiz.olivares@gmail.com',
-        pass: 'elemshardish'
+        user: process.env.USUARIO,
+        pass: process.env.PASSWORD
     }
     },
     {

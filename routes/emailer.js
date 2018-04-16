@@ -7,7 +7,9 @@ var userModel = require('../models/userModel');
 var btoa = require('btoa')
 
 router.post('/forgotPassword',(req,res,send)=>{
-  userModel.fetchSingleByEmail(req.body.email,(error, result)=>{
+
+
+  userModel.fetchActiveByEmail(req.body.email,(error, result)=>{
       if(result){
         email.transporter.use('compile', Hbs  ({
           viewEngine: 'hbs',

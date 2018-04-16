@@ -168,6 +168,7 @@ router.post('/editar-usuario', (req, res, next)=>{
     req.body.active === 'on' ? active = 1 : active = 0;
 
     let usuario = {};
+    usuario.id = req.body.id;
     usuario.username = req.body.username;
     usuario.email = req.body.email;
     usuario.password = req.body.password;
