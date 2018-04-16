@@ -168,17 +168,12 @@ router.post('/editar-usuario', (req, res, next)=>{
     req.body.active === 'on' ? active = 1 : active = 0;
 
     let usuario = {};
+    usuario.id = req.body.id;
     usuario.username = req.body.username;
     usuario.email = req.body.email;
     usuario.password = req.body.password;
     usuario.hash = req.body.hash;
     usuario.active = active;
-    console.log(req.body)
-    console.log(req.body.username)
-    console.log(req.body.email)
-    console.log(req.body.password)
-    console.log(req.body.hash)
-
 
     userModel.update(usuario, (error, result)=>{
         if(result){

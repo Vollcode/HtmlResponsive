@@ -1,3 +1,4 @@
+'use strict'
 require('dotenv').config()
 const EXPRESS = require('express');
 const PATH = require('path');
@@ -6,32 +7,6 @@ const hbs = require('hbs');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
-// var sequelize = require('./config/connector')
-//
-// sequelize.authenticate()
-//     .then(()=> {
-//       console.log('Connection has been established successfully')
-//     })
-//     .catch(error => {
-//       console.error('Error in connecting to the database: ', error)
-//     })
-//
-// const Usuario = sequelize.define('user', {
-//   firstName: {
-//     type: Sequelize.STRING
-//   },
-//   lastName: {
-//     type: Sequelize.STRING
-//   }
-// })
-//
-// User.sync({force: true}).then(() => {
-//   return User.create({
-//     firstName: 'John',
-//     lastName: 'Wick'
-//   })
-// })
 
 var winston = require('./config/winston');
 var admin = require('./routes/admin');

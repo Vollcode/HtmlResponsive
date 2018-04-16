@@ -1,7 +1,8 @@
-let express = require('express');
-let router = express.Router();
-let userModel = require('../models/userModel');
-let travelModel = require('../models/travelModel');
+var express = require('express');
+var router = express.Router();
+var userModel = require('../models/userModel');
+var travelModel = require('../models/travelModel');
+var atob = require('atob')
 let email = require('../config/mailconf');
 let db = require('../database/dbConnection');
 const path = require('path');
@@ -38,6 +39,8 @@ router.get('/destination/:city', (req,res,next)=>{
   })
 });
 
+
+
 router.get('/login', function(req, res, next) {
     res.render('login',
         {
@@ -46,7 +49,7 @@ router.get('/login', function(req, res, next) {
 })
 
 router.get('/signup', function(req, res, next) {
-    res.render('signup',
+    res.render('registro',
         {
             title: 'User SignUp',
         })
@@ -66,12 +69,12 @@ router.post('/signup', function (req, res) {
         if(error) res.status(500).json(error);
         switch (result){
             case 1:
-            res.render('signup',{
+            res.render('registro',{
                 title:"El nombre de usuario ya existe",
             })
                 break;
             case 2:
-            res.render('signup',{
+            res.render('registro',{
                 title:"El email  ya existe",
             })
                 break;
@@ -150,8 +153,43 @@ router.post('/login', function (req,res) {
 router.get('/destroy',(req,res,next)=>{
     req.session.destroy();
     res.redirect('/');
+})
+
+router.get('/recuperarPassword/:id', (req,res,next)=>{
+  let id = atob(req.params.id);
+  userModel.fetchSingleById(id,(error, result)=>{
+      if(result){
+          res.render('recuperarPassword', {
+              result: result[0]
+          });
+      }else {
+          return res.status(500).json(err);
+      }
+  })
 });
-/*
+
+router.post('/recuperarPassword', (req,res,next)=>{
+
+  let user = {}
+  user.id = req.body.id
+  user.password = req.body.password
+  userModel.updatePassword(user, (error, result)=>{
+      if(result){
+          res.redirect('/passwordCambiado');
+      } else {
+          res.status(500).json('Error al editar usuario '+ error);
+      }
+  });
+});
+
+router.get('/passwordCambiado', function(req, res, next) {
+    res.render('passwordCambiado',
+        {
+            title: 'Cambio de Password',
+        })
+})
+
+
 router.get('*', function(req, res) {
     res.render('error404');
 })
