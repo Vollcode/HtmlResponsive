@@ -1,20 +1,12 @@
-'use strict';
-var express = require('express');
-var router = express.Router();
-var userModel = require('../models/userModel');
-var travelModel = require('../models/travelModel');
-
-//Attachments
-router.get('/sendAttachment',(req,res,next)=>{
-  let message = {
-    to: 'daniel@gmail.com',
-    subject: 'Testeo',
-    html:'<p>Prueba</p>',
-    attachment: ''
-  }
-})
-
-
+let express = require('express');
+let router = express.Router();
+let userModel = require('../models/userModel');
+let travelModel = require('../models/travelModel');
+let email = require('../config/mailconf');
+let db = require('../database/dbConnection');
+const path = require('path');
+const Hbs = require('nodemailer-express-handlebars');
+const hashcrypt = require('bcrypt-nodejs');
 
 router.get('/', (req,res,next)=>{
   travelModel.fetchActive((error,travels)=>{
@@ -61,8 +53,16 @@ router.get('/signup', function(req, res, next) {
 })
 
 router.post('/signup', function (req, res) {
-    let user={ username:req.body.username, email:req.body.email, password:req.body.password, hash:req.body.hash}
-    userModel.signUp(user,function (error,result) {
+    let user = {
+        username:req.body.username,
+        email:req.body.email,
+        password:req.body.password,
+        hash:hashcrypt.hashSync(req.body.hash)
+    };
+
+    let usuario = user;
+
+    userModel.signUp(user,function (error,result,user) {
         if(error) res.status(500).json(error);
         switch (result){
             case 1:
@@ -76,17 +76,47 @@ router.post('/signup', function (req, res) {
             })
                 break;
             case 3:
-            res.render('login',{
-                title:"Registro correcto",
-            })
+                email.transporter.use('compile', Hbs  ({
+                    viewEngine: 'hbs',
+                    extName: '.hbs',
+                    viewPath: path.join(__dirname + '/../views/email-templates')
+                }));
+                let encodedhash = encodeURIComponent(usuario.hash);
+                let message = {
+                    from: 'GHTravels <no-reply@geekshubtravels.com>',
+                    to: usuario.email,
+                    subject : 'Activa tu cuenta de Geekshubs Travels',
+                    template:'email',
+                    context: {
+                        encodedhash: encodedhash
+                    }
+                };
+                email.transporter.sendMail(message,(error,info) =>{
+                    if(error){
+                        res.status(500).send(error);
+                        return
+                    }
+                    email.transporter.close();
+                    res.status(200).send('Respuesta "%s"' + info.response);
+                });
+                res.render('login', {
+                    title: 'Bienvenido!'
+                });
                 break;
         }
     })
-})
+});
+router.get('/active/:id', function(req,res){
+    userModel.activateUser(req.params.id, (error,cb)=>{
+        if(error) res.status(500).json(error);
+        else res.redirect('/login');
+    })
+});
 
 router.post('/login', function (req,res) {
-    let user={ username:req.body.username, password:req.body.password }
-
+    let user = { username:req.body.username, password:req.body.password }
+    console.log("user en login post: "+ user);
+    console.log(req.body.username);
     userModel.login(user,function (error,result) {
         if(error) res.status(500).json(error);
 
@@ -94,7 +124,7 @@ router.post('/login', function (req,res) {
             case 1:
                 res.render('login', {
                     title: "Login incorrecto",
-                })
+                });
                 break;
             case 2:
                 if(user.username=='admin'){
@@ -109,6 +139,10 @@ router.post('/login', function (req,res) {
                 }
                 res.redirect('/');
                 break;
+            case 3:
+                res.render('index',{
+                    title:'no active'
+                })
         }
     })
 })
@@ -116,10 +150,11 @@ router.post('/login', function (req,res) {
 router.get('/destroy',(req,res,next)=>{
     req.session.destroy();
     res.redirect('/');
-})
-
+});
+/*
 router.get('*', function(req, res) {
     res.render('error404');
 })
+*/
 
 module.exports = router;

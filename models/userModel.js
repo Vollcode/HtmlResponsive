@@ -1,4 +1,3 @@
-'use strict'
 let db=require('../database/dbConnection');
 let user={};
 
@@ -9,9 +8,22 @@ user.fetchAll=(cb)=>{
         if(error) return cb(error);
         else return cb(null,rows);
     })
-}
+};
 
-user.signUp=function (user,cb) {
+user.getHash = function(user,cb) {
+    if(!db) return cb("Error en la conexión");
+    return db.query("SELECT hash FROM user WHERE email = ?",[user.email]);
+};
+
+user.activateUser = function(hash, cb){
+    if(!db) return cb("Error en la conexión");
+    db.query('UPDATE user SET active = 1 WHERE hash = ?', [hash], (error, result)=>{
+        if(error) return cb(error);
+        else return cb(null, result);
+    })
+};
+
+user.signUp = function (user,cb) {
     if(!db) return cb("Error en la conexión");
     db.query('SELECT * FROM user WHERE username=?',[user.username],(error,result)=>{
         if(error) return cb(error);
@@ -28,19 +40,24 @@ user.signUp=function (user,cb) {
                         return cb(null,3);
                 })}
         })}
-})}
+})};
 
 user.login=function (user,cb) {
     if(!db) return cb("Error en la conexión");
     db.query('SELECT * FROM user WHERE username=? AND password=?',[user.username,user.password],(error,result)=>{
         if(error) return cb(error);
-        if (result != ''){
-            return cb(null,2);
-        } else {
-            return cb(null,1);
+        if (result != '') {
+            if (result[0].active === 0) {
+                return cb(null, 3);
+            } else {
+                return cb(null, 2);
+            }
+        }
+        else {
+            return cb(null, 1);
         }
     })
-}
+};
 
 
 //Recoger un usuario por id
@@ -52,7 +69,7 @@ user.fetchSingleById = (id, cb) => {
             else return cb(null, result);
         })
     }
-}
+};
 
 //Recoger los usuarios activos
 user.fetchActive = (cb) => {
@@ -62,7 +79,7 @@ user.fetchActive = (cb) => {
         if (error) return cb(error);
         else return cb(null, rows);
     })
-}
+};
 
 
 //Actualiza un destino
@@ -77,7 +94,7 @@ user.update = (user, cb) => {
         if(err) return cb(err);
         else return cb(null, result);
     });
-}
+};
 
 
 //Borrar usuarios
@@ -92,7 +109,8 @@ user.deleteUser = (id, cb) => {
             })
         }
     })
-}
+};
+
 //Crear usuarios
 user.insertUser = (user, cb) => {
     if (!db) return cb("Error en la conexión");
@@ -102,6 +120,6 @@ user.insertUser = (user, cb) => {
             return cb(null, result);
         })
     }
-}
+};
 
 module.exports=user;
