@@ -89,7 +89,7 @@ router.post('/signup', function (req, res) {
                     from: 'GHTravels <no-reply@geekshubtravels.com>',
                     to: usuario.email,
                     subject : 'Activa tu cuenta de Geekshubs Travels',
-                    template:'email',
+                    template:'emailActivate',
                     context: {
                         encodedhash: encodedhash
                     }
@@ -193,6 +193,5 @@ router.get('/passwordCambiado', function(req, res, next) {
 router.get('*', function(req, res) {
     res.render('error404');
 })
-*/
 
 module.exports = router;

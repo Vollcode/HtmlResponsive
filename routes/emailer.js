@@ -45,7 +45,7 @@ router.post('/forgotPassword',(req,res,send)=>{
         let message = {
           to:req.body.email,
           subject:'Email para cambiar el password',
-          template: 'email',
+          template: 'emailRecover',
           context: {
             user:
             username,
