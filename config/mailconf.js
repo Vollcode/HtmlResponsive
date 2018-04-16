@@ -9,7 +9,7 @@ email.transporter = NMAILER.createTransport({
     }
     },
     {
-        from:'irememberwhat8@gmail.com',
+        from:'geekshubtravel@gmail.com',
         headers:{
         }
 
