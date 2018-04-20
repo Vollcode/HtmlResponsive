@@ -3,7 +3,7 @@ let user={};
 
 user.fetchAll=(cb)=>{
     if(!db) return cb("Error en la conexión");
-    var sql="Select * FROM user";
+    var sql="Select * FROM users";
     db.query(sql, (error,rows)=>{
         if(error) return cb(error);
         else return cb(null,rows);
@@ -12,12 +12,12 @@ user.fetchAll=(cb)=>{
 
 user.getHash = function(user,cb) {
     if(!db) return cb("Error en la conexión");
-    return db.query("SELECT hash FROM user WHERE email = ?",[user.email]);
+    return db.query("SELECT hash FROM users WHERE email = ?",[user.email]);
 };
 
 user.activateUser = function(hash, cb){
     if(!db) return cb("Error en la conexión");
-    db.query('UPDATE user SET active = 1 WHERE hash = ?', [hash], (error, result)=>{
+    db.query('UPDATE users SET active = 1 WHERE hash = ?', [hash], (error, result)=>{
         if(error) return cb(error);
         else return cb(null, result);
     })
@@ -25,17 +25,17 @@ user.activateUser = function(hash, cb){
 
 user.signUp = function (user,cb) {
     if(!db) return cb("Error en la conexión");
-    db.query('SELECT * FROM user WHERE username=?',[user.username],(error,result)=>{
+    db.query('SELECT * FROM users WHERE username=?',[user.username],(error,result)=>{
         if(error) return cb(error);
         if (result != ''){
             return cb(null,1);
         } else {
-            db.query('SELECT * FROM user WHERE email=?',[user.email],(error,result)=>{
+            db.query('SELECT * FROM users WHERE email=?',[user.email],(error,result)=>{
                 if(error) return cb(error);
                 if (result != ''){
                     return cb(null,2);
                 } else {
-                    db.query('INSERT INTO user SET ?',[user],(error,result)=>{
+                    db.query('INSERT INTO users SET ?',[user],(error,result)=>{
                         if(error) return cb(error);
                         return cb(null,3);
                 })}
@@ -44,7 +44,7 @@ user.signUp = function (user,cb) {
 
 user.login=function (user,cb) {
     if(!db) return cb("Error en la conexión");
-    db.query('SELECT * FROM user WHERE username=? AND password=?',[user.username,user.password],(error,result)=>{
+    db.query('SELECT * FROM users WHERE username=? AND password=?',[user.username,user.password],(error,result)=>{
         if(error) return cb(error);
         if (result != '') {
             if (result[0].active === 0) {
@@ -64,7 +64,7 @@ user.login=function (user,cb) {
 user.fetchSingleById = (id, cb) => {
     if (!db) return cb("Error en la conexión");
     else {
-        db.query("SELECT * FROM user WHERE id=?", [id], (error, result) => {
+        db.query("SELECT * FROM users WHERE id=?", [id], (error, result) => {
             if (error) return cb(error);
             else return cb(null, result);
         })
@@ -75,7 +75,7 @@ user.fetchSingleById = (id, cb) => {
 user.fetchSingleByEmail = (email, cb) => {
     if (!db) return cb("Error en la conexión");
     else {
-        db.query("SELECT * FROM user WHERE email=?", [email], (error, result) => {
+        db.query("SELECT * FROM users WHERE email=?", [email], (error, result) => {
             if (error) return cb(error);
             else return cb(null, result);
         })
@@ -85,7 +85,7 @@ user.fetchSingleByEmail = (email, cb) => {
 //Recoger los usuarios activos
 user.fetchActive = (cb) => {
     if (!db) return cb("Error en la conexión");
-    var sql = "SELECT * FROM user WHERE active=1";
+    var sql = "SELECT * FROM users WHERE active=1";
     db.query(sql, (error, rows) => {
         if (error) return cb(error);
         else return cb(null, rows);
@@ -96,7 +96,7 @@ user.fetchActive = (cb) => {
 user.fetchActiveByEmail = (email,cb) => {
     if (!db) return cb("Error en la conexión");
     else {
-      db.query("SELECT * FROM user WHERE active=1 AND email=?",[email], (error, result) => {
+      db.query("SELECT * FROM users WHERE active=1 AND email=?",[email], (error, result) => {
         if (error) return cb(error);
         else return cb(null, result);
       })
@@ -111,7 +111,7 @@ user.update = (user, cb) => {
 
     if (!db) return cb("Error en la conexión");
 
-    let sql = "update user set username='"+user.username+"', email='"+user.email+"', password='"+user.password+"', hash='"+user.hash+"', isAdmin=0, active="+user.active+" where id="+user.id+";";
+    let sql = "update users set username='"+user.username+"', email='"+user.email+"', password='"+user.password+"', hash='"+user.hash+"', isAdmin=0, active="+user.active+" where id="+user.id+";";
     db.query(sql, (err, result)=>{
         if(err) return cb(err);
         else return cb(null, result);
@@ -122,7 +122,7 @@ user.update = (user, cb) => {
 user.updatePassword = (user, cb) => {
     if (!db) return cb("Error en la conexión");
 
-    let sql = "update user set password='"+user.password+"' where id="+user.id+";";
+    let sql = "update users set password='"+user.password+"' where id="+user.id+";";
     db.query(sql, (err, result)=>{
         if(err) return cb(err);
         else return cb(null, result);
@@ -132,10 +132,10 @@ user.updatePassword = (user, cb) => {
 //Borrar usuarios
 user.deleteUser = (id, cb) => {
     if (!db) return cb("Error en la conexión");
-    db.query("SELECT * FROM user WHERE id=?", id, function (error, result) {
+    db.query("SELECT * FROM users WHERE id=?", id, function (error, result) {
         if (error) return cb(error);
         else {
-            db.query("DELETE FROM user WHERE id=?", id, function () {
+            db.query("DELETE FROM users WHERE id=?", id, function () {
                 if (error) return cb(error);
                 return cb(null, result);
             })
@@ -147,11 +147,29 @@ user.deleteUser = (id, cb) => {
 user.insertUser = (user, cb) => {
     if (!db) return cb("Error en la conexión");
     else {
-        db.query('INSERT INTO user SET ?', user, (error, result) => {
+        db.query('INSERT INTO users SET ?', user, (error, result) => {
             if (error) return cb(error);
             return cb(null, result);
         })
     }
 };
+
+user.paginate =(offset, limit, cb)=>{
+  if(db) {
+  db.query("SELECT * FROM users LIMIT ?, ?", [offset, limit],(error,rows)=>{
+    if(error){
+      return cb(error);
+    }else{
+        db.query("SELECT COUNT(*) as total FROM users",(error, count)=>{
+          if(error) {
+            return cb(error)
+          }else{
+            return cb(null,{count,rows});
+          }
+      })
+    }
+  })
+  }
+}
 
 module.exports=user;

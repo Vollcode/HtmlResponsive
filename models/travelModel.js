@@ -84,4 +84,23 @@ travel.insertTravel = (travel, cb) => {
         })
     }
 }
+
+travel.paginate =(offset, limit, cb)=>{
+  if(db) {
+  db.query("SELECT * FROM  travel LIMIT ?, ?", [offset, limit],(error,rows)=>{
+    if(error){
+      return cb(error);
+    }else{
+        db.query("SELECT COUNT(*) as total FROM travel",(error, count)=>{
+          if(error) {
+            return cb(error)
+          }else{
+            return cb(null,{count,rows});
+          }
+      })
+    }
+  })
+  }
+}
+
 module.exports = travel;

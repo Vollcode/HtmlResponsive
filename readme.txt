@@ -1,18 +1,15 @@
-12/04
-ficheros nuevos :
-emailer.js -> message.to = correo destinatario del mensaje
-            los attachments estan comentados por problemas con las rutas de la imagen que quería
-            enviar, si consigues que las encuentre te pago un café
+Responsive Web made with Bootstrap, Express, Mysql and an array of middlewares to get a better result out of the experience.
 
-mailconf.js -> user: correo desde el cual se envía
-                pass: password real del correo
-                from: nombre que leerá el destinatario como origen del correo, si ahi ponemos por ejemplo
-                no-reply@geekshubsTravels.com, el usuario leería ese correo como el emisor del mismo
+To enjoy this website, you simply have to follow these instructions:
 
-email-templates --> email.hbs -> no está en uso, pero se le puede pasar como render en /send en emailer.js
+- First of all, either fork or clone this repo.
 
-app.js -> require ruta de emailer.js
-            use /emailer para cargarlo, luego en /emailer/send es cuando el correo se envía
+Then, run these commands:
 
-index.js -> comentado error 404 para que no de problemas al /emailer/send no estar en index.js
-            quedaría controlar el 404 handler desde app.js
+```
+npm install
+bower install
+vagrant up
+```
+
+Now you can visit your localhost in the port 8080 to enjoy this travel website!
