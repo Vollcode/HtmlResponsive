@@ -11,6 +11,7 @@
     "bower": "^1.8.2",
     "browser-sync": "^2.23.6",
     "btoa": "^1.2.1",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
@@ -35,6 +36,8 @@
     "nodemailer": "^4.6.4",
     "nodemailer-express-handlebars": "^3.0.0",
     "npm": "^5.8.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "sequelize": "^4.37.6",
     "winston": "^2.4.1"
   },

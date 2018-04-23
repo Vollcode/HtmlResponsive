@@ -30,7 +30,6 @@ router.get ('/send',(req,res,send)=>{
 
 router.post('/forgotPassword',(req,res,send)=>{
 
-
   userModel.fetchActiveByEmail(req.body.email,(error, result)=>{
       if(result){
         email.transporter.use('compile', Hbs  ({
@@ -72,8 +71,6 @@ router.post('/forgotPassword',(req,res,send)=>{
         email.transporter.close();
     res.status(200).send('Respuesta ' + info.response);
     });
-    console.log("LLEGA HASTA AQUI")
-    console.log(req.body.email)
       }else {
           return res.status(500).json(err);
       }

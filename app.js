@@ -7,7 +7,9 @@ const hbs = require('hbs');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const Passport = require('passport');
 var paginate = require('express-paginate');
+var flash = require('connect-flash')
 
 
 var winston = require('./config/winston');
@@ -24,6 +26,8 @@ APP.set( 'view engine', 'hbs' );
 
 hbs.registerPartials(`${__dirname}/views/partials`);
 require('./helpers/hbs')(hbs);
+APP.use(cookieParser());
+
 APP.use(session({
   secret:'abcde',
   name: 'mySession',
@@ -31,12 +35,20 @@ APP.use(session({
   saveUninitialized:true
 }));
 
+APP.use(flash())
+
+APP.use(Passport.initialize());
+APP.use(Passport.session());
+APP.use((req,res,next)=>{
+  res.locals.user= req.user;
+  next();
+})
+
 APP.use(logger('combined', {stream: winston.stream}));
 
 APP.use(bodyParser.json());
 APP.use(bodyParser.urlencoded({ extended: false }));
 
-APP.use(cookieParser());
 
 APP.use('/emailer',emailer);
 APP.use('/admin', admin);

@@ -1,0 +1,54 @@
+<section id="seccionListaDestinos">
+    <div class="wrapper">
+        <div class="container">
+            <div class="row" class="rowTable">
+                {{#if travels.length}}
+                    <table class="table table-sm">
+                        <tr>
+														<td>Imagen</td>
+                            <td>Destino</td>
+                            <td>Descripción</td>
+                            <td>Número de gente</td>
+                            <td>Precio</td>
+                            <td>Eliminar</td>
+                        </tr>
+                        {{#each travels}}
+                            <tr>
+															  <td><img src="{{image}}" alt="{{travel}}" class="detalleImagen"></td>
+                                <td>{{city}}</td>
+                                <td>{{description}}</td>
+                                <td><input type="number" min="0" max="15"></td>
+																<td>{{price}}</td>
+                                <td><form  action="deleteCartItem" method="post">
+                                  <input type="hidden" name="itemId" value="{{id}}">
+                                  <button type="submit" name="button">
+                                    <span class="fa fa-trash-o remove" aria-hidden="true"></span>
+                                  </button>
+                                </form></td>
+                            </tr>
+                        {{/each}}
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>Total :</td>
+                          <td>{{precioSinIva}}€</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>+ IVA: 8%</td>
+                          <td>{{precioConIva}}€</td>
+                        </tr>
+                    </table>
+                    <div id="checkoutButton">
+                      <button type="button" class="btn btn-success">Checkout</button>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</section>

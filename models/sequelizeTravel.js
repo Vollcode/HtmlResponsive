@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 var sequelize = require('../config/connector')
 
-const Destino = sequelize.define('travel', {
+const Destino = sequelize.define('travels', {
   city: {
     type: Sequelize.STRING,
     allowNull: false

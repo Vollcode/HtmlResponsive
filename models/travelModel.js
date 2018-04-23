@@ -5,7 +5,7 @@ let travel = {};
 // Recoger todos los destinos
 travel.fetchAll = (cb) => {
     if (!db) return cb("Error en la conexión");
-    var sql = "SELECT * FROM travel";
+    var sql = "SELECT * FROM travels";
     db.query(sql, (error, rows) => {
         if (error) return cb(error);
         else return cb(null, rows);
@@ -16,7 +16,7 @@ travel.fetchAll = (cb) => {
 travel.fetchSingle = (city, cb) => {
     if (!db) return cb("Error en la conexión");
     else {
-        db.query("SELECT * FROM travel WHERE city=?", [city], (error, result) => {
+        db.query("SELECT * FROM travels WHERE city=?", [city], (error, result) => {
             if (error) return cb(error);
             else return cb(null, result);
         })
@@ -27,7 +27,7 @@ travel.fetchSingle = (city, cb) => {
 travel.fetchSingleById = (id, cb) => {
     if (!db) return cb("Error en la conexión");
     else {
-        db.query("SELECT * FROM travel WHERE id=?", [id], (error, result) => {
+        db.query("SELECT * FROM travels WHERE id=?", [id], (error, result) => {
             if (error) return cb(error);
             else return cb(null, result);
         })
@@ -37,7 +37,7 @@ travel.fetchSingleById = (id, cb) => {
 //Recoger los destinos activos
 travel.fetchActive = (cb) => {
     if (!db) return cb("Error en la conexión");
-    var sql = "SELECT * FROM travel WHERE active=1";
+    var sql = "SELECT * FROM travels WHERE active=1";
     db.query(sql, (error, rows) => {
         if (error) return cb(error);
         else return cb(null, rows);
@@ -52,7 +52,7 @@ travel.update = (travel, cb) => {
 
     if (!db) return cb("Error en la conexión");
 
-    let sql = "update travel set city='"+travel.city+"', description='"+travel.description+"', type='"+travel.type+"', active="+travel.active+", price='"+travel.price+"', image='"+travel.image+"' where id="+travel.id+";";
+    let sql = "update travels set city='"+travel.city+"', description='"+travel.description+"', type='"+travel.type+"', active="+travel.active+", price='"+travel.price+"', image='"+travel.image+"' where id="+travel.id+";";
 
     db.query(sql, (err, result)=>{
         if(err) return cb(err);
@@ -64,10 +64,10 @@ travel.update = (travel, cb) => {
 //Borrar destinos
 travel.deleteTravel = (id, cb) => {
     if (!db) return cb("Error en la conexión");
-    db.query("SELECT * FROM travel WHERE id=?", id, function (error, result) {
+    db.query("SELECT * FROM travels WHERE id=?", id, function (error, result) {
         if (error) return cb(error);
         else {
-            db.query("DELETE FROM travel WHERE id=?", id, function () {
+            db.query("DELETE FROM travels WHERE id=?", id, function () {
                 if (error) return cb(error);
                 return cb(null, result);
             })
@@ -78,7 +78,7 @@ travel.deleteTravel = (id, cb) => {
 travel.insertTravel = (travel, cb) => {
     if (!db) return cb("Error en la conexión");
     else {
-        db.query('INSERT INTO travel SET ?', travel, (error, result) => {
+        db.query('INSERT INTO travels SET ?', travel, (error, result) => {
             if (error) return cb(error);
             return cb(null, result);
         })
@@ -87,11 +87,11 @@ travel.insertTravel = (travel, cb) => {
 
 travel.paginate =(offset, limit, cb)=>{
   if(db) {
-  db.query("SELECT * FROM  travel LIMIT ?, ?", [offset, limit],(error,rows)=>{
+  db.query("SELECT * FROM  travels LIMIT ?, ?", [offset, limit],(error,rows)=>{
     if(error){
       return cb(error);
     }else{
-        db.query("SELECT COUNT(*) as total FROM travel",(error, count)=>{
+        db.query("SELECT COUNT(*) as total FROM travels",(error, count)=>{
           if(error) {
             return cb(error)
           }else{

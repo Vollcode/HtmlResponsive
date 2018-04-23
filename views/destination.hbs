@@ -8,17 +8,23 @@
     <meta name="author" content="">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"></script>
     <title>Travel Item</title>
   </head>
 
   <body>
     <div class="container">
+      {{#if message}}
+      <div class="alert alert-success" role="alert">
+        <strong>Muy Bien!</strong> Tu compra se ha añadido a la lista.
+      </div>
+      {{/if}}
       {{#if travels.length}}
         {{#each travels}}
       <h1 class="my-4">
         {{city}} <small>Bonita ciudad</small>
       </h1>
-
       <div class="row">
 
         <div class="col-md-8">
@@ -35,12 +41,24 @@
             <li>Consectetur</li>
             <li>Adipiscing Elit</li>
           </ul>
+          <h3 class="my-3">Precio</h3>
+          <p>{{price}}€</p>
+          <form  action="/addToCart" method="post">
+            <input type="hidden" name="destination" value="{{id}}">
+            <input type="hidden" name="city" value="{{city}}">
+            <button type="submit" class="btn btn-info btn-md" name="button">
+              <span class="fa fa-shopping-cart"></span> Añadir al carro
+            </button>
+          </form>
+          <br>
+          <form class="" action="/" method="get">
+            <button type="submit" class="btn btn-Home"><i class="fas fa-home"></i>   Inicio</button>
+          </form>
+          {{/each}}
+          {{/if}}
         </div>
-        {{/each}}
-        {{/if}}
       </div>
-      <h3 class="my-4">Related Projects</h3>
-
+      <h3 class="my-4">Otros lugares</h3>
       <div class="row">
 
         <div class="col-md-3 col-sm-6 mb-4">

@@ -311,3 +311,8 @@ i.fa.fa-check {
 i.fa.fa-times {
     color: crimson;
 }
+
+#checkoutButton {
+  margin-left:auto;
+  margin-right:0;
+}

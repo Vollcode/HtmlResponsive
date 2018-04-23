@@ -24,13 +24,7 @@ const Usuario = sequelize.define('user', {
   active: {
     type: Sequelize.BOOLEAN,
     defaultValue: '0'
-  },
-  id: {
-     type: Sequelize.INTEGER,
-     autoIncrement: true,
-     primaryKey: true,
-     allowNull: false
- }
+  }
 })
 
 module.exports = Usuario

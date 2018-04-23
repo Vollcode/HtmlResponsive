@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Website Tutorial</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="/public/images/favicon.ico.html"/>
+    <link rel="stylesheet" href="/public/stylesheets/estilos.css">
+    <link rel="shortcut icon" type="image/png" href="http://localhost:3000/public/favicon.ico.html"/>
+
+    <!--<link rel="stylesheet" type="text/css" href="css/estilos.css">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/components-font-awesome/css/fontawesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+{{> header }}
+<div id="fondoAdmin">
+{{{body}}}
+</div>
+{{> footer }}
+<script src="bower_components/popper.js/dist/umd/popper.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(window).scroll(function () {
+        if ($("#menu").offset().top > 56) {
+            $("#menu").addClass("bg-dark");
+        } else {
+            $("#menu").removeClass("bg-dark");
+        }
+    });
+
+    $('table').on('click','tr a.remove',function(e){
+      e.preventDefault();
+      $(this).closest('tr').remove();
+    });
+</script>
+</body>
+</html>
