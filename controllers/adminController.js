@@ -96,11 +96,6 @@ adminController.getOpenDestination=function(req,res,next){
 adminController.postSaveUser=function(req,res,next){
   var active;
   req.body.active === 'on' ? active = 1 : active = 0;
-  // let usuario = {};
-  // usuario.username = req.body.username;
-  // usuario.email = req.body.email;
-  // usuario.password = req.body.password;
-  // usuario.hash = req.body.hash;
   userSequelize.create({username: req.body.username, email: req.body.email,password: req.body.password,hash:req.body.hash,active:active})
   .then((result)=>{
     if(result){
@@ -108,77 +103,62 @@ adminController.postSaveUser=function(req,res,next){
     }
   })
   .error((err)=>{ return done(null,err)})
-  // userModel.insertUser(usuario, (error, insertID)=>{
-  //    if(insertID){
-  //        res.redirect('/admin/users');
-  //    } else {
-  //        res.status(500).json('Error al guardar'+ error);
-  //    }
-  // });
 }
 
 adminController.postEditUser=function(req,res,next){
   var active;
   req.body.active === 'on' ? active = 1 : active = 0;
-
-  let usuario = {};
-  usuario.id = req.body.id;
-  usuario.username = req.body.username;
-  usuario.email = req.body.email;
-  usuario.password = req.body.password;
-  usuario.hash = req.body.hash;
-  usuario.active = active;
-
-  userModel.update(usuario, (error, result)=>{
-      if(result){
-          res.redirect('/admin/users');
-      } else {
-          res.status(500).json('Error al editar usuario '+ error);
-      }
-  });
+  userSequelize.update({username: req.body.username, email: req.body.email,password: req.body.password,hash:req.body.hash,active:active},{where: {id: req.body.id}})
+  .then((result)=>{
+    res.redirect('/admin/users');
+  })
+  .error((err)=>{
+      return done(null,err)
+  })
 }
 
 adminController.postSaveDestination=function(req,res,next){
   var active;
   req.body.active === 'on' ? active = 1 : active = 0;
+  var imagePath = "/" + req.file.path;
 
-  let destino = {};
-  destino.city = req.body.travel;
-  destino.description = req.body.description;
-  destino.type = req.body.type;
-  destino.active = active;
-  destino.price = req.body.price;
-  destino.image = "/" + req.file.path;
-
-  travelModel.insertTravel(destino, (error, insertID)=>{
-     if(insertID){
-         res.redirect('/admin/destinos');
-     } else {
-         res.status(500).json('Error al guardar'+ error);
-     }
-  });
+  travelSequelize.create({city: req.body.travel, description: req.body.description,type: req.body.type,price:req.body.price,image:imagePath,active:active})
+  .then((result)=>{
+    if(result){
+       res.redirect('/admin/destinos');
+    }
+  })
+  .error((err)=>{ return done(null,err)})
 }
 
 adminController.postEditDestination=function(req,res,next){
   var active;
   req.body.active === 'on' ? active = 1 : active = 0;
+  var imagePath = "/" + req.file.path;
 
-  let destino = {};
-  destino.id = req.body.id;
-  destino.city = req.body.travel;
-  destino.description = req.body.description;
-  destino.type = req.body.type;
-  destino.active = active;
-  destino.price = req.body.price;
-  destino.image = "/" + req.file.path;
+  travelSequelize.update({city: req.body.travel, description: req.body.description,type: req.body.type,price:req.body.price,image:imagePath,active:active},{where: {id: req.body.id}})
+  .then((result)=>{
+    res.redirect('/admin/destinos');
+  })
+  .error((err)=>{
+      return done(null,err)
+  })
+}
 
-  travelModel.update(destino, (error, result)=>{
-      if(result){
-          res.redirect('/admin/destinos');
-      } else {
-          res.status(500).json('Error al editar'+ error);
-      }
-  });
+adminController.getDeleteUser=function(req,res,next){
+  let idToDestroy = req.params.id;
+  userSequelize.destroy({ where: { id: idToDestroy } })
+  .then(function(){
+    res.redirect('/admin/users');
+  })
+}
+
+adminController.getDeleteDestination=function(req,res,next){
+  let idToDestroy = req.params.id;
+  travelSequelize.destroy({ where: { id: idToDestroy } })
+  .then(function(){
+    res.redirect('/admin/destinos');
+  })
 }
 
 adminController.getOpenUser=function(req,res,next){
@@ -195,21 +175,6 @@ adminController.getOpenUser=function(req,res,next){
   })
 }
 
-adminController.getDeleteUser=function(req,res,next){
-  let idToDestroy = req.params.id;
-  userSequelize.destroy({ where: { id: idToDestroy } })
-    .then(function(){
-      res.redirect('/admin/users');
-    })
-}
-
-adminController.getDeleteDestination=function(req,res,next){
-  let idToDestroy = req.params.id;
-  travelSequelize.destroy({ where: { id: idToDestroy } })
-    .then(function(){
-      res.redirect('/admin/destinos');
-    })
-}
 
 
 
